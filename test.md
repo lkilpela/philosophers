@@ -1,4 +1,7 @@
 # Error handling
+1. less than 5 args
+./philo 
+2. Number of philos: less than 0 and larger than 200
 
 # philo code
 

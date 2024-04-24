@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 13:07:21 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:21:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_philo(t_philo *p, int ac, char **av)
 	p->time_to_die = ft_atoi(av[2]);
 	p->time_to_eat = ft_atoi(av[3]);
 	p->time_to_sleep = ft_atoi(av[4]);
-	if (ac < 5)
+	if (ac == 5)
 		p->num_of_times_each_philos_must_eat = 0;
 	else
 		p->num_of_times_each_philos_must_eat = ft_atoi(av[5]);
