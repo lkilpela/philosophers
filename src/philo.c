@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 14:17:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:17:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_philo(t_philo *p, int ac, char **av)
 	else
 	{
 		p->eat_times = ft_atoi(av[5]);
-		if (p->eat_times = 0)
+		if (p->eat_times == 0)
 			return (1);
 	}
 	if (p->eat_times < 0)
