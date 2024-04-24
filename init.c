@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 15:33:02 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:47:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,19 @@ int	init_program(t_program *p, int ac, char **av)
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
 		return (1);
 	pthread_mutex_init(&p->lock, NULL);
+	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
+	if (!p->philo)
+		return (1);
 	return (0);	
 }
 
-int	init_philo(t_philo *philo)
+int	init_philo(int id, t_philo *philo)
 {
-	
+	philo->id = id;
+	philo->start_time = 0;
+	philo->times_eaten = 0;
+	philo->dead = 0;
+	pthread_mutex_init(&philo->left_fork, NULL);
+	pthread_mutex_init(&philo->right_fork, NULL);
+	//pthread_create();
 }

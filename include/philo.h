@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 15:33:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:44:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 typedef struct  s_philo
 {
 	int				id;				// Each philo's unique identifier
-	int 			eat_times;		// Number of times each philo must eat
 	int				start_time;
 	int				times_eaten;	// A count of eaten times
 	int				dead;
@@ -40,6 +39,7 @@ typedef struct	s_program
 	int 			time_to_die;
 	int 			time_to_eat;
 	int 			time_to_sleep;
+	int 			eat_times;		// Number of times each philo must eat
 	pthread_mutex_t	lock;
 	t_philo			*philo;
 }				t_program;
