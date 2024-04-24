@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:22:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:42:04 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define SUCCESS	0
 # define TRUE		0
 # define FALSE		1
-
 
 typedef struct  s_philo
 {
