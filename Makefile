@@ -5,7 +5,7 @@ LIBFT = lib/libft
 
 HDRS = -I./include -I$(LIBFT)/include/
 LIBS = $(LIBFT)/build/libft.a
-SRCS = philo/philo.c
+SRCS = philo/philo.c philo/utils.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: libft $(NAME)
