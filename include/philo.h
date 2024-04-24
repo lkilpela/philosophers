@@ -6,18 +6,17 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:16:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:58:20 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 
 // pthread_create, pthread_detach, pthread_join, pthread_mutex_init,
 // pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock
 # include <pthread.h>
 # include <stdio.h>     // printf
-//# include <limits.h>
 # include <unistd.h>    // write, usleep
 # include <stdlib.h>    // malloc, free
 # include <sys/time.h>  // gettimeofday, 
