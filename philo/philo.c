@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:52:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:05:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int    init_philo(t_philo *p, int ac, char **av)
+int	init_philo(t_philo *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
 	p->time_to_die = ft_atoi(av[2]);

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:58:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:06:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,11 @@ typedef struct  s_philo
 	int num_of_times_each_philos_must_eat;
 }               t_philo;
 
+//main
+int	init_philo(t_philo *p, int ac, char **av);
+
+//utils
+
+int	ft_atoi(const char *str);
 
 #endif
