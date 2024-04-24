@@ -16,10 +16,9 @@ Time to sleep < 60
 
 4. Number of times each philo must eat (optional argument)
 No input provided -> set a default value of 0 and return promp
-Non-integer or <= 0 provide -> display error
+Non-integer or < 0 provide -> display error
 ./philo 200 60 200 200 f
 ./philo 200 60 200 200 -1
-NEED TO CHECK IF OPTIONAL ARGUMENT 0 is valid input.
 
 # philo code
 
