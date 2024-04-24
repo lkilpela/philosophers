@@ -6,9 +6,17 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:08:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:09:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void    init_philo(t_philo *p)
+{
+    
+}
+int main(int ac, char **av)
+{
+    
+}
