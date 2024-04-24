@@ -6,24 +6,24 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 14:26:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:21:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init_philo(t_philo *p, int ac, char **av)
+int	init_program(t_program *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
 	p->time_to_die = ft_atoi(av[2]);
 	p->time_to_eat = ft_atoi(av[3]);
 	p->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 5)
-		p->eat_times = 0;
+		p->philo->eat_times = 0;
 	else
 	{
-		p->eat_times = ft_atoi(av[5]);
-		if (p->eat_times < 0)
+		p->philo->eat_times = ft_atoi(av[5]);
+		if (p->philo->eat_times < 0)
 			return (1);
 	}
 	if (p->num_of_philos <= 0 || p->num_of_philos > 200)
@@ -35,7 +35,7 @@ int	init_philo(t_philo *p, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-    t_philo	p;
+	t_program	p;
 
 	if (ac < 5)
 	{
