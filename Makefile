@@ -1,5 +1,5 @@
 NAME = philo
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g
 
 HDRS = -I./include
 SRCS = src/philo.c src/utils.c

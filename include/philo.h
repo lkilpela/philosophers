@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 13:06:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:39:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct  s_philo
 	int time_to_die;
 	int time_to_eat;
 	int time_to_sleep;
-	int num_of_times_each_philos_must_eat;
+	int eat_times;		// Number of times each philo must eat
 }               t_philo;
 
 //main
