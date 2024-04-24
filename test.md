@@ -15,7 +15,7 @@ Time to sleep < 60
 ./philo 200 60 200 59
 
 4. Number of times each philo must eat (optional argument)
-No input -> should implicitly assign 0 and return promp
+No input provided -> set a default value of 0 and return promp
 
 # philo code
 

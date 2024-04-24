@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:34:04 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 13:09:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:50:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_isspace(int c)
 		|| c == ' ');
 }
 
-static int	ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
