@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:20:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:24:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int	init_program(t_program *p, int ac, char **av)
 	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philo)
 		return (1);
-	return (0);	
+	return (0);
 }
 
-int init_mutex_forks(t_program *p)
+int	init_mutex_forks(t_program *p)
 {
 	int	i;
 
 	i = 0;
-	p->forks= malloc(p->num_of_philos * sizeof(pthread_mutex_t));
+	p->forks = malloc(p->num_of_philos * sizeof(pthread_mutex_t));
 	if (!p->forks)
 		return (1);
 	while (i < p->num_of_philos)
@@ -66,7 +66,8 @@ int	init_philo(t_program *p)
 		p->philo[i].eating = 0;
 		p->philo[i].left_fork = &p->forks[i];
 		p->philo[i].right_fork = &p->forks[(i + 1) % p->num_of_philos];
+		if (pthread_create(&p->philo[i].thread, NULL,
+				start_routine, &p->philo[i]))
+			return (1);
 	}
-	if (pthread_create(&p->philo[i].thread, NULL, start_routine, &p->philo[i]))
-		return (1);
 }
