@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 15:47:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:15:04 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	init_program(t_program *p, int ac, char **av)
 		return (1);
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
 		return (1);
-	pthread_mutex_init(&p->lock, NULL);
+	if (pthread_mutex_init(&p->lock, NULL))
+		return (1);
 	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philo)
 		return (1);
@@ -43,7 +44,14 @@ int	init_philo(int id, t_philo *philo)
 	philo->start_time = 0;
 	philo->times_eaten = 0;
 	philo->dead = 0;
-	pthread_mutex_init(&philo->left_fork, NULL);
-	pthread_mutex_init(&philo->right_fork, NULL);
-	//pthread_create();
+	if (pthread_mutex_init(&philo->left_fork, NULL))
+		return (1);
+	if (pthread_mutex_init(&philo->right_fork, NULL))
+		return (1);
+	if (pthread_create(philo_life, NULL, NULL, NULL))
+	{
+		pthread_mutex_destroy(&philo->left_fork);
+		pthread_mutex_destroy(&philo->right_fork);
+		return (1);
+	}
 }

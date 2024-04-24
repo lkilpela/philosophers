@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 15:44:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:12:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <stdlib.h>    // malloc, free
 # include <sys/time.h>  // gettimeofday, 
 # include <string.h>    // memset
+
+# define FAILURE	1
+# define SUCCESS	0
+# define TRUE		0
+# define FALSE		1
+
 
 typedef struct  s_philo
 {
@@ -45,6 +51,9 @@ typedef struct	s_program
 }				t_program;
 //init
 int	init_program(t_program *p, int ac, char **av);
+
+//
+void *philo_life(t_philo *philo);
 
 //utils
 
