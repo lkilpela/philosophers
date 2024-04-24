@@ -8,12 +8,12 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 %.o : %.c
-	@$(CC) $(CCFLAGS) $(HDRS) -c $< -o $@
+	@$(CC) $(CCFLAGS) -o $@ -c $< $(HDRS)
 	@echo "$(GREEN)Compiled: $< $(RESET)"
 
 $(NAME): $(OBJS)
 	@echo "--------------------------------------------"
-	@$(CC) $(OBJS) -o $(NAME)
+	@$(CC) $(OBJS) $(HDRS) -o $(NAME)
 	@echo "[$(NAME)] $(BLUE)Built target $(NAME)$(RESET)"
 	@echo "--------------------------------------------"
 
