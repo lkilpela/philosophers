@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 13:05:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:07:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int	init_philo(t_philo *p, int ac, char **av)
 	return (0);	
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
     t_philo	p;
 
 	if (ac < 5)
 	{
 		printf("Error\n");
-		return 1;
+		return (1);
 	}
 	if (init_philo(&p, ac, av) == 1)
 	{
