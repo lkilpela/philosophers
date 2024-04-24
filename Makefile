@@ -2,7 +2,7 @@ NAME = philo
 CCFLAGS = -Wall -Wextra -Werror -g
 
 HDRS = -I./include
-SRCS = src/philo.c src/utils.c
+SRCS = src/philo.c src/utils.c src/ft_atoi.c  src/init.c  src/dining.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 21:15:04 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:14:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,43 @@ int	init_program(t_program *p, int ac, char **av)
 		return (1);
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
 		return (1);
-	if (pthread_mutex_init(&p->lock, NULL))
-		return (1);
 	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philo)
 		return (1);
 	return (0);	
 }
 
-int	init_philo(int id, t_philo *philo)
+int init_mutex_forks(t_program *p)
 {
-	philo->id = id;
-	philo->start_time = 0;
-	philo->times_eaten = 0;
-	philo->dead = 0;
-	if (pthread_mutex_init(&philo->left_fork, NULL))
+	int	i;
+
+	i = 0;
+	p->forks= malloc(p->num_of_philos * sizeof(pthread_mutex_t));
+	if (!p->forks)
 		return (1);
-	if (pthread_mutex_init(&philo->right_fork, NULL))
-		return (1);
+	while (i < p->num_of_philos)
+	{
+		if (pthread_mutex_init(&p->forks[i], NULL))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	init_philo(t_program *p)
+{
+	int	i;
+
+	i = 0;
+	while (i < p->num_of_philos)
+	{
+		p->philo[i].id = i + 1;
+		p->philo[i].times_eaten = 0;
+		p->philo[i].last_meal = 0;
+		p->philo[i].eating = 0;
+		p->philo[i].left_fork = &p->forks[i];
+		p->philo[i].right_fork = &p->forks[(i + 1) % p->num_of_philos];
+	}
 	if (pthread_create(philo_life, NULL, NULL, NULL))
 	{
 		pthread_mutex_destroy(&philo->left_fork);
