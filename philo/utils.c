@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:34:04 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:36:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:38:24 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	ft_is_overflow(int result, int sign, int digit)
 {
-    int max;
-    int min;
+	int max;
+	int min;
 
-    max = 2147483647;
-    min = -2147483648;
+	max = 2147483647;
+	min = -2147483648;
 	if ((sign == 1 && result > (max - digit) / 10)
 		|| (sign == -1 && result < (min + digit) / 10))
 		return (1);
