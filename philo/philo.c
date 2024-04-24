@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:52:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:52:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int    init_philo(t_philo *p, int ac, char **av)
 	if (p->num_of_philos <= 0 || p->num_of_philos > 200)
 		return (1);
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
-		return 1;
+		return (1);
 	if (p->num_of_times_each_philos_must_eat < 0)
-		return 1;
+		return (1);
 	return (0);	
 }
 
