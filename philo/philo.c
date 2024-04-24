@@ -6,19 +6,22 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:33:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:46:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void    init_philo(t_philo *p, char **av)
+void    init_philo(t_philo *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
 	p->time_to_die = ft_atoi(av[2]);
 	p->time_to_eat = ft_atoi(av[3]);
 	p->time_to_sleep = ft_atoi(av[4]);
-	p->num_of_times_each_philos_must_eat = ft_atoi(av[5]);
+	if (ac < 5)
+		p->num_of_times_each_philos_must_eat = 0;
+	else
+		p->num_of_times_each_philos_must_eat = ft_atoi(av[5]);
 }
 int main(int ac, char **av)
 {
@@ -40,6 +43,5 @@ int main(int ac, char **av)
 		printf("Error\n");
 		return 1;
 	}
-	
-	
+
 }
