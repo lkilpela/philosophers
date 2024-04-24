@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:14:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:20:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ int	init_philo(t_program *p)
 		p->philo[i].left_fork = &p->forks[i];
 		p->philo[i].right_fork = &p->forks[(i + 1) % p->num_of_philos];
 	}
-	if (pthread_create(philo_life, NULL, NULL, NULL))
-	{
-		pthread_mutex_destroy(&philo->left_fork);
-		pthread_mutex_destroy(&philo->right_fork);
+	if (pthread_create(&p->philo[i].thread, NULL, start_routine, &p->philo[i]))
 		return (1);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:10:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:22:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ typedef struct	s_program
 }				t_program;
 //init
 int	init_program(t_program *p, int ac, char **av);
+int	init_philo(t_program *p);
+int init_mutex_forks(t_program *p);
 
 //
-void *philo_life(t_philo *philo);
+void *start_routine(void *arg);
 
 //utils
 
