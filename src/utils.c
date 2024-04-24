@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:34:04 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 13:50:49 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:25:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_isspace(int c)
 		|| c == ' ');
 }
 
-int	ft_isdigit(int c)
+static int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
@@ -50,8 +50,10 @@ int	ft_atoi(const char *str)
 		sign = -1;
 	if (*str == '+' || *str == '-')
 		str++;
-	while (ft_isdigit(*str))
+	while (*str)
 	{
+		if (!ft_isdigit((unsigned char)*str))
+			return (-1);
 		digit = *str - '0';
 		if (ft_is_overflow(result, sign, digit))
 			return (0);
