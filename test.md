@@ -1,7 +1,21 @@
 # Error handling
 1. less than 5 args
 ./philo 
-2. Number of philos: less than 0 and larger than 200
+2. Number of philos: less than/ equal 0 and larger than 200
+./philo 0 800 200 200
+./philo 201 800 200 200
+3. Time to eat/sleep/die < 60
+Time to die < 60
+./philo 200 59 200 200
+
+Time to eat < 60
+./philo 200 60 59 200
+
+Time to sleep < 60
+./philo 200 60 200 59
+
+4. Number of times each philo must eat (optional argument)
+No input -> should implicitly assign 0 and return promp
 
 # philo code
 
