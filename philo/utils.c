@@ -6,11 +6,22 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:34:04 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:38:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:09:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	ft_isspace(int c)
+{
+	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ');
+}
+
+static int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
 static int	ft_is_overflow(int result, int sign, int digit)
 {
