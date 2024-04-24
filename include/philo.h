@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 12:09:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:16:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 
 typedef struct  s_philo
 {
-	int number_of_philosopher;
+	int num_of_philos;
 	int time_to_die;
 	int time_to_eat;
 	int time_to_sleep;
-	int number_of_times_each_philosopher_must_eat;
+	int num_of_times_each_philos_must_eat;
 }               t_philo;
 
 
