@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:51:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:52:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int 	init_mutex_forks(t_program *p);
 
 //
 void 	*start_routine(void *arg);
+void	died(t_program *p);
 
 // time
 int 	get_current_time(void);

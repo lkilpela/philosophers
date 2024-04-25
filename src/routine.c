@@ -6,24 +6,18 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:49:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:52:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	thinking(t_program *p)
+static void	thinking(t_program *p)
 {
 	print_time_stamp(p->philo, "is thinking");
 }
 
-void	sleeping(t_program *p)
-{
-	print_time_stamp(p->philo, "is sleeping");
-	ft_usleep(p->time_to_sleep);
-}
-
-void	eating(t_program *p)
+static void	eating(t_program *p)
 {
 	// Take forks
 	pthread_mutex_lock(&p->philo->left_fork);
@@ -45,6 +39,13 @@ void	eating(t_program *p)
 	pthread_mutex_unlock(&p->philo->left_fork);
 	pthread_mutex_unlock(&p->philo->right_fork);
 }
+
+static void	sleeping(t_program *p)
+{
+	print_time_stamp(p->philo, "is sleeping");
+	ft_usleep(p->time_to_sleep);
+}
+
 // dies if does not eat within a certain amount of time
 void	died(t_program *p)
 {
