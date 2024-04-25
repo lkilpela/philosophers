@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 10:50:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:12:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ void	sleeping(t_philo *philo)
 
 void	eating(t_philo *philo)
 {
-     
+    philo->last_meal = get_time();
 }
-
-void	die(t_philo *philo)
+// dies if does not eat within a certain amount of time
+void	died(t_philo *philo, int time_to_die)
 {
-	
+	long long	starved;
+
+	starved = get_time() - philo->last_meal;
+	if (starved > time_to_die)
+	{
+		print_time_stamp(philo, "died\n");
+	}
 }
 
 // void *(*start_routine) (void *)
@@ -38,5 +44,14 @@ void	die(t_philo *philo)
 
 void *start_routine(void *arg)
 {
-    
+    t_philo *philo;
+
+	philo = (t_philo *)arg;
+	while(1)
+	{
+		thinking(philo);
+		eating(philo);
+		sleeping(philo);
+	}
+	return (NULL);
 }

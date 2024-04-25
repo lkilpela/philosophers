@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 11:28:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:08:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void 	*start_routine(void *arg);
 
 // time
 int 	get_time(void);
+void	print_time_stamp(t_philo *philo, char *str);
 //utils
 void	free_all(t_program *p);
 int		ft_atoi(const char *str);
