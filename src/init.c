@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 21:28:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:49:44 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int init_one_philo(t_philo *philo, int i, t_program *p)
 	philo->start_time = get_current_time();
 	philo->died = 0;
 	philo->last_eaten = 0;
-	//philo->eating = 0;
 	philo->left_fork = &p->forks[i];
 	philo->right_fork = &p->forks[(i + 1) % p->num_of_philos];
 	philo->program = p;
