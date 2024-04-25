@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:56:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:11:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int get_time(void)
     if (gettimeofday(&tv, NULL == 1))
 		return (1);
 	return (tv.tv_sec * 1000000 + tv.tv_usec / 1000);    
+}
+
+void free_all(t_program *p)
+{
+	free(p->philo);
+	pthread_mutex_destroy(p->forks);
 }
 
 static int	ft_is_overflow(int result, int sign, int digit)

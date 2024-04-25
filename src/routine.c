@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dining.c                                           :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:52:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:50:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	thinking(t_philo *philo)
+{
+	
+}
 
+void	sleeping(t_philo *philo)
+{
+	
+}
 
-void eating(t_philo *philo)
+void	eating(t_philo *philo)
 {
      
+}
+
+void	die(t_philo *philo)
+{
+	
 }
 
 // void *(*start_routine) (void *)

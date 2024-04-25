@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 08:54:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:10:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int init_mutex_forks(t_program *p);
 void *start_routine(void *arg);
 
 //utils
-
+void free_all(t_program *p);
 int	ft_atoi(const char *str);
 
 #endif
