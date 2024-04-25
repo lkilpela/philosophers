@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:58:39 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:27:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,28 @@
 
 typedef struct  s_philo
 {
-	int				id;				// Each philo's unique identifier
-	long long		start_time;
-	int				times_eaten;	// A count of eaten times
-	int				died;			// flag
-	long long		last_eaten;
+	int					id;				// Each philo's unique identifier
+	long long			start_time;
+	int					times_eaten;	// A count of eaten times
+	int					died;			// flag
+	long long			last_eaten;
 	//int				eating;			// flag	
-	pthread_mutex_t	*left_fork;		// Pointer to mutex: left fork philo uses
-	pthread_mutex_t	*right_fork;	// Pointer to mutex: right fork philo uses
-	pthread_t		thread;			// Philo's thread
+	pthread_mutex_t		*left_fork;		// Pointer to mutex: left fork philo uses
+	pthread_mutex_t		*right_fork;	// Pointer to mutex: right fork philo uses
+	pthread_t			thread;	
+	struct s_program	*program;		// Philo's thread
 }               t_philo;
 
 typedef struct	s_program
 {
-	int 			num_of_philos;
-	long long 		time_to_die;
-	long long 		time_to_eat;
-	long long 		time_to_sleep;
-	int 			eat_times;		// Number of times each philo must eat
-	pthread_mutex_t	*forks;
-	t_philo			*philo;
-	pthread_mutex_t	lock;
+	int 				num_of_philos;
+	long long 			time_to_die;
+	long long 			time_to_eat;
+	long long 			time_to_sleep;
+	int 				eat_times;		// Number of times each philo must eat
+	pthread_mutex_t		*forks;
+	t_philo				*philo;
+	pthread_mutex_t		lock;
 }				t_program;
 //init
 int		init_program(t_program *p, int ac, char **av);

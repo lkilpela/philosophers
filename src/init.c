@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 16:11:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:28:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ int	init_program(t_program *p, int ac, char **av)
 	return (0);
 }
 
-int init_one_philo(t_philo *philo, int id,
-					pthread_mutex_t *left_fork, pthread_mutex_t *right_fork)
+int init_one_philo(t_philo *philo, int i, t_program *p)
 {
-	philo->id = id;
+	philo->id = i + 1;
 	philo->start_time = get_current_time();
 	philo->died = 0;
 	philo->last_eaten = 0;
 	//philo->eating = 0;
-	philo->left_fork = left_fork;
-	philo->right_fork = right_fork;
+	philo->left_fork = &p->forks[i];
+	philo->right_fork = &p->forks[(i + 1) % p->num_of_philos];
+	philo->program = p;
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
 		return (1);
 	return (0);
@@ -80,26 +80,12 @@ int	init_philos(t_program *p)
 	i = 0;
 	while (i < p->num_of_philos)
 	{
-		status = init_one_philo(&p->philo[i], i + 1,
-				&p->forks[i], &p->forks[(i + 1) % p->num_of_philos]);
-		if (status)
+		if (init_one_philo(&p->philo[i], i, p))
 			return (1);
 		i++;
 	}
 	return (0);
 }
-
-
-
-		/*p->philo[i].id = i + 1;
-		p->philo[i].times_eaten = 0;
-		p->philo[i].last_meal = 0;
-		p->philo[i].eating = 0;
-		p->philo[i].left_fork = &p->forks[i];
-		p->philo[i].right_fork = &p->forks[(i + 1) % p->num_of_philos];
-		if (pthread_create(&p->philo[i].thread, NULL,
-				start_routine, &p->philo[i]))
-			return (1);*/
 			
 /*
 The pthread_create function in C is used to create a new thread.
