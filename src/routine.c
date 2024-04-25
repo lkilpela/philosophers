@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:53:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:00:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ static void	eating(t_program *p)
 	// Start eating
 	print_time_stamp(p->philo, "is eating");
 	pthread_mutex_lock(&p->philo->lock);
-	p->philo->eating = get_current_time();
-	p->philo->last_meal = p->philo->start_time + p->time_to_eat;
+	//p->philo->eating = 1;
+	p->philo->last_eaten = get_current_time();
+	p->eat_times++;
 	pthread_mutex_unlock(&p->philo->lock);
 
 	// Sleep for time_to_eat 
 	ft_usleep(p->time_to_eat);
 
 	// Release forks
+	//p->philo->eating = 0;
 	pthread_mutex_unlock(&p->philo->left_fork);
 	pthread_mutex_unlock(&p->philo->right_fork);
 }
@@ -50,8 +52,9 @@ static void	sleeping(t_program *p)
 void	died(t_program *p)
 {
 	long long	starved;
-
-	starved = get_current_time() - p->philo->last_meal;
+	
+	p->philo->last_eaten = p->philo->start_time + p->time_to_eat;
+	starved = get_current_time() - p->philo->last_eaten;
 	if (starved > p->time_to_die)
 	{
 		p->philo->died = 1;
