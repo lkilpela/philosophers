@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 22:12:58 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:41:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ void	*start_routine(void *arg)
 	t_philo	*philo;	
 
 	philo = (t_philo *)arg;
+	if (philo->program->num_of_philos == 1)
+	{
+		ft_usleep(philo->program->time_to_die);
+		pthread_mutex_unlock(philo->left_fork);
+	}
 	while ((philo->program->eat_times == 0 
 		|| philo->times_eaten < philo->program->eat_times)
 		&& philo->died != 1)
