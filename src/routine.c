@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:27:04 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:41:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	sleeping(t_program *p)
 
 void	eating(t_program *p)
 {
-    p->philo->last_meal = p->philo->start_time + p->time_to_eat;
+	print_time_stamp(p->philo, "is eating");
+	pthread_mutex_lock(&p->philo->lock);
+	p->philo->last_meal = p->philo->start_time + p->time_to_eat;
+	pthread_mutex_unlock(&p->philo->lock);
 }
 // dies if does not eat within a certain amount of time
 void	died(t_program *p)
