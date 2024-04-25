@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 21:44:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:12:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,12 @@ static void	sleeping(t_philo *philo)
 	ft_usleep(philo->program->time_to_sleep);
 }
 
-// dies if does not eat within a certain amount of time
-void	check_if_died(t_philo *philo)
-{
-	long long starved;
-
-	starved = get_current_time() - philo->last_eaten;
-	if (starved > philo->program->time_to_die)
-	{
-		philo->died = 1;
-		print_time_stamp(philo, "died\n");
-	}
-}
-
 // void *(*start_routine) (void *)
 // A pointer to the function that the new thread will start executing. 
 //This function should take a single void * argument and return a void *.
 void	*start_routine(void *arg)
 {
-	t_philo	*philo;
+	t_philo	*philo;	
 
 	philo = (t_philo *)arg;
 	while ((philo->program->eat_times == 0 
