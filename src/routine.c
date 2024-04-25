@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:19:50 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:27:04 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	thinking(t_program *p)
 void	sleeping(t_program *p)
 {
 	print_time_stamp(p->philo, "is sleeping");
+	ft_usleep(p);
 }
 
 void	eating(t_program *p)
