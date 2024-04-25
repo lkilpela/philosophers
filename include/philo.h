@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 21:41:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:47:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,20 @@ typedef struct	s_program
 	pthread_mutex_t		lock;
 }				t_program;
 //init
-int		init_program(t_program *p, int ac, char **av);
-int		init_philos(t_program *p);
-int 	init_mutex_forks(t_program *p);
+int			init_program(t_program *p, int ac, char **av);
+int			init_philos(t_program *p);
+int 		init_mutex_forks(t_program *p);
 
 //
-void 	*start_routine(void *arg);
-void	check_if_died(t_philo *philo);
+void 		*start_routine(void *arg);
+void		check_if_died(t_philo *philo);
 
 // time
 long long 	get_current_time(void);
-void	print_time_stamp(t_program *p, t_philo *philo, char *str);
-void	ft_usleep(t_program *p, long long time);
+void		print_time_stamp(t_philo *philo, char *str);
+void		ft_usleep(long long time);
 //utils
-void	free_all(t_program *p);
-int		ft_atoi(const char *str);
+void		free_all(t_program *p);
+int			ft_atoi(const char *str);
 
 #endif
