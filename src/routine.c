@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:00:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:12:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	thinking(t_program *p)
 static void	eating(t_program *p)
 {
 	// Take forks
-	pthread_mutex_lock(&p->philo->left_fork);
+	pthread_mutex_lock(p->philo->left_fork);
 	print_time_stamp(p->philo, "has taken a fork");
-	pthread_mutex_lock(&p->philo->right_fork);
+	pthread_mutex_lock(p->philo->right_fork);
 	print_time_stamp(p->philo, "has taken a fork");
 
 	// Start eating
@@ -34,18 +34,18 @@ static void	eating(t_program *p)
 	pthread_mutex_unlock(&p->philo->lock);
 
 	// Sleep for time_to_eat 
-	ft_usleep(p->time_to_eat);
+	ft_usleep(p, p->time_to_eat);
 
 	// Release forks
 	//p->philo->eating = 0;
-	pthread_mutex_unlock(&p->philo->left_fork);
-	pthread_mutex_unlock(&p->philo->right_fork);
+	pthread_mutex_unlock(p->philo->left_fork);
+	pthread_mutex_unlock(p->philo->right_fork);
 }
 
 static void	sleeping(t_program *p)
 {
 	print_time_stamp(p->philo, "is sleeping");
-	ft_usleep(p->time_to_sleep);
+	ft_usleep(p, p->time_to_sleep);
 }
 
 // dies if does not eat within a certain amount of time

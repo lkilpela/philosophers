@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:32:39 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:14:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ long long	get_current_time(void)
 	return ((long long)tv.tv_sec * 1000000 + tv.tv_usec / 1000);
 }
 
-void	ft_usleep(t_program *p)
+void	ft_usleep(t_program *p, long long time)
 {
-	int	start_sleep;
+	long long	start_sleep;
 
 	start_sleep = get_current_time();
-	while ((get_current_time() - start_sleep) < p->time_to_sleep)
+	time = p->time_to_sleep;
+	while ((get_current_time() - start_sleep) < time)
 		usleep(50);
 }
 
