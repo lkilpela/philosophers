@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:52:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:53:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ void	died(t_program *p)
 // void *(*start_routine) (void *)
 // A pointer to the function that the new thread will start executing. 
 //This function should take a single void * argument and return a void *.
-
-void *start_routine(void *arg)
+void	*start_routine(void *arg)
 {
-    t_program *p;
+	t_program	*p;
 
 	p = (t_program *)arg;
 	while (p->eat_times > 0 || p->philo->died != 1)
