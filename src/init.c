@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 21:49:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:50:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int init_one_philo(t_philo *philo, int i, t_program *p)
 int	init_philos(t_program *p)
 {
 	int	i;
-	int	status;
 	
 	i = 0;
 	while (i < p->num_of_philos)
