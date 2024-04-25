@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:10:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:19:50 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	thinking(t_program *p)
 {
-	
+	print_time_stamp(p->philo, "is thinking");
 }
 
 void	sleeping(t_program *p)
 {
-	
+	print_time_stamp(p->philo, "is sleeping");
 }
 
 void	eating(t_program *p)
@@ -48,7 +48,7 @@ void *start_routine(void *arg)
     t_program *p;
 
 	p = (t_program *)arg;
-	while(1)
+	while (p->eat_times > 0 || p->philo->died != 1)
 	{
 		thinking(p);
 		eating(p);
