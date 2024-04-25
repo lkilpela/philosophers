@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:35:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:41:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int init_one_philo(t_philo *philo, int id,
 	//philo->eating = 0;
 	philo->left_fork = left_fork;
 	philo->right_fork = right_fork;
-	if (pthread_mutex_init(&philo->lock, NULL))
-		return (1);
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
 		return (1);
 	return (0);
@@ -67,6 +65,8 @@ int	init_program(t_program *p, int ac, char **av)
 	if (!p->philo)
 		return (1);
 	if (init_mutex_forks(p))
+		return (1);
+	if (pthread_mutex_init(&p->lock, NULL))
 		return (1);
 	return (0);
 }

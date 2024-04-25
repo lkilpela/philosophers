@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:16:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:40:24 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct  s_philo
 	//int				eating;			// flag	
 	pthread_mutex_t	*left_fork;		// Pointer to mutex: left fork philo uses
 	pthread_mutex_t	*right_fork;	// Pointer to mutex: right fork philo uses
-	pthread_mutex_t	lock;
 	pthread_t		thread;			// Philo's thread
 }               t_philo;
 
@@ -50,6 +49,7 @@ typedef struct	s_program
 	int 			eat_times;		// Number of times each philo must eat
 	pthread_mutex_t	*forks;
 	t_philo			*philo;
+	pthread_mutex_t	lock;
 }				t_program;
 //init
 int		init_program(t_program *p, int ac, char **av);
