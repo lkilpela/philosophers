@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 08:53:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:04:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ int	init_mutex_forks(t_program *p)
 	}
 	return (0);
 }
+
+/*int init_one_philo(int id, t_philo *philo)
+{
+	philo->id = id;
+	philo->times_eaten = 0;
+	philo->last_meal = 0;
+	philo->eating = 0;
+}*/
 
 int	init_philos(t_program *p)
 {
