@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:41:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:49:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,30 @@ void	thinking(t_program *p)
 void	sleeping(t_program *p)
 {
 	print_time_stamp(p->philo, "is sleeping");
-	ft_usleep(p);
+	ft_usleep(p->time_to_sleep);
 }
 
 void	eating(t_program *p)
 {
+	// Take forks
+	pthread_mutex_lock(&p->philo->left_fork);
+	print_time_stamp(p->philo, "has taken a fork");
+	pthread_mutex_lock(&p->philo->right_fork);
+	print_time_stamp(p->philo, "has taken a fork");
+
+	// Start eating
 	print_time_stamp(p->philo, "is eating");
 	pthread_mutex_lock(&p->philo->lock);
+	p->philo->eating = get_current_time();
 	p->philo->last_meal = p->philo->start_time + p->time_to_eat;
 	pthread_mutex_unlock(&p->philo->lock);
+
+	// Sleep for time_to_eat 
+	ft_usleep(p->time_to_eat);
+
+	// Release forks
+	pthread_mutex_unlock(&p->philo->left_fork);
+	pthread_mutex_unlock(&p->philo->right_fork);
 }
 // dies if does not eat within a certain amount of time
 void	died(t_program *p)

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:25:50 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:51:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct  s_philo
 	int				times_eaten;	// A count of eaten times
 	int				died;
 	int				last_meal;
-	int				eating;
+	long long		eating;
 	pthread_mutex_t	*left_fork;		// Pointer to mutex: left fork philo uses
 	pthread_mutex_t	*right_fork;	// Pointer to mutex: right fork philo uses
 	pthread_mutex_t	lock;
@@ -44,9 +44,9 @@ typedef struct  s_philo
 typedef struct	s_program
 {
 	int 			num_of_philos;
-	int 			time_to_die;
-	int 			time_to_eat;
-	int 			time_to_sleep;
+	long long 		time_to_die;
+	long long 		time_to_eat;
+	long long 		time_to_sleep;
 	int 			eat_times;		// Number of times each philo must eat
 	pthread_mutex_t	*forks;
 	t_philo			*philo;
