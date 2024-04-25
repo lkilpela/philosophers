@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 14:11:34 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:03:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,17 @@ int init_one_philo(t_philo *philo, int id,
 					pthread_mutex_t *left_fork, pthread_mutex_t *right_fork)
 {
 	philo->id = id;
-	philo->start_time = get_time();
+	philo->start_time = get_current_time();
 	philo->died = 0;
-	philo->last_meal = 0;
-	philo->eating = 0;
+	philo->last_eaten = 0;
+	//philo->eating = 0;
 	philo->left_fork = left_fork;
 	philo->right_fork = right_fork;
 	if (pthread_mutex_init(&philo->lock, NULL))
 		return (1);
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
 		return (1);
+	return (0);
 }
 
 int	init_philos(t_program *p)
@@ -83,6 +84,7 @@ int	init_philos(t_program *p)
 			return (1);
 		i++;
 	}
+	return (0);
 }
 
 		/*p->philo[i].id = i + 1;
