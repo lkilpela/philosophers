@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 11:13:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:22:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct  s_philo
 	int				eating;
 	pthread_mutex_t	*left_fork;		// Pointer to mutex: left fork philo uses
 	pthread_mutex_t	*right_fork;	// Pointer to mutex: right fork philo uses
+	pthread_mutex_t	lock;
 	pthread_t		thread;			// Philo's thread
 }               t_philo;
 
