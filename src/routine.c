@@ -6,59 +6,54 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 16:00:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:44:56 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	thinking(t_program *p)
+static void	thinking(t_philo *philo)
 {
-	print_time_stamp(p, p->philo, "is thinking");
+	print_time_stamp(philo, "is thinking");
 }
 
-static void	eating(t_program *p)
+static void	eating(t_philo *philo)
 {
 	// Take forks
-	pthread_mutex_lock(p->philo->left_fork);
-	print_time_stamp(p, p->philo, "has taken a fork");
-	pthread_mutex_lock(p->philo->right_fork);
-	print_time_stamp(p, p->philo, "has taken a fork");
+	pthread_mutex_lock(philo->left_fork);
+	print_time_stamp(philo, "has taken a left fork");
+	pthread_mutex_lock(philo->right_fork);
+	print_time_stamp(philo, "has taken a right fork");
 
 	// Start eating
-	print_time_stamp(p, p->philo, "is eating");
-	pthread_mutex_lock(&p->lock);
-	//p->philo->eating = 1;
-	p->philo->last_eaten = get_current_time();
-	p->eat_times++;
-	pthread_mutex_unlock(&p->lock);
-
+	print_time_stamp(philo, "is eating");
+	
+	philo->last_eaten = get_current_time();
+	
 	// Sleep for time_to_eat 
-	ft_usleep(p, p->time_to_eat);
+	ft_usleep(philo->program->time_to_eat);
 
 	// Release forks
-	//p->philo->eating = 0;
-	pthread_mutex_unlock(p->philo->left_fork);
-	pthread_mutex_unlock(p->philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
-static void	sleeping(t_program *p)
+static void	sleeping(t_philo *philo)
 {
-	print_time_stamp(p, p->philo, "is sleeping");
-	ft_usleep(p, p->time_to_sleep);
+	print_time_stamp(philo, "is sleeping");
+	ft_usleep(philo->program->time_to_sleep);
 }
 
 // dies if does not eat within a certain amount of time
-void	died(t_program *p)
+void	check_if_died(t_philo *philo)
 {
-	long long	starved;
-	
-	p->philo->last_eaten = p->philo->start_time + p->time_to_eat;
-	starved = get_current_time() - p->philo->last_eaten;
-	if (starved > p->time_to_die)
+	long long starved;
+
+	starved = get_current_time() - philo->last_eaten;
+	if (starved > philo->program->time_to_die)
 	{
-		p->philo->died = 1;
-		print_time_stamp(p, p->philo, "died\n");
+		philo->died = 1;
+		print_time_stamp(philo, "died\n");
 	}
 }
 
@@ -67,14 +62,17 @@ void	died(t_program *p)
 //This function should take a single void * argument and return a void *.
 void	*start_routine(void *arg)
 {
-	t_program	*p;
+	t_philo	*philo;
 
-	p = (t_program *)arg;
-	while (p->eat_times > 0 || p->philo->died != 1)
+	philo = (t_philo *)arg;
+	while ((philo->program->eat_times == 0 
+		|| philo->times_eaten < philo->program->eat_times)
+		&& philo->died != 1)
 	{
-		thinking(p);
-		eating(p);
-		sleeping(p);
+		thinking(philo);
+		eating(philo);
+		sleeping(philo);
+		check_if_died(philo);
 	}
 	return (NULL);
 }
