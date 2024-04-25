@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:19:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:58:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ void	ft_usleep(t_program *p, long long time)
 		usleep(50);
 }
 
-void	print_time_stamp(t_philo *philo, char *str)
+void	print_time_stamp(t_program *p, t_philo *philo, char *str)
 {
-	pthread_mutex_lock(&philo->lock);
-	printf("%lld %d %s\n", get_current_time() - philo->start_time,
-			philo->id, str);
-	pthread_mutex_unlock(&philo->lock);
+	long long time;
+
+	pthread_mutex_lock(&p->lock);
+	time = get_current_time() - philo->start_time;
+	printf("%lld %d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&p->lock);
 }
