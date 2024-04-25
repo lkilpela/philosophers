@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 16:05:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:11:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,6 @@ int	init_mutex_forks(t_program *p)
 	return (0);
 }
 
-int init_one_philo(t_philo *philo, int id,
-					pthread_mutex_t *left_fork, pthread_mutex_t *right_fork)
-{
-	philo->id = id;
-	philo->start_time = get_current_time();
-	philo->died = 0;
-	philo->last_eaten = 0;
-	//philo->eating = 0;
-	philo->left_fork = left_fork;
-	philo->right_fork = right_fork;
-	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
-		return (1);
-	return (0);
-}
 int	init_program(t_program *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
@@ -71,12 +57,27 @@ int	init_program(t_program *p, int ac, char **av)
 	return (0);
 }
 
+int init_one_philo(t_philo *philo, int id,
+					pthread_mutex_t *left_fork, pthread_mutex_t *right_fork)
+{
+	philo->id = id;
+	philo->start_time = get_current_time();
+	philo->died = 0;
+	philo->last_eaten = 0;
+	//philo->eating = 0;
+	philo->left_fork = left_fork;
+	philo->right_fork = right_fork;
+	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
+		return (1);
+	return (0);
+}
+
 int	init_philos(t_program *p)
 {
 	int	i;
 	int	status;
 	
-	i = 1;
+	i = 0;
 	while (i < p->num_of_philos)
 	{
 		status = init_one_philo(&p->philo[i], i + 1,
