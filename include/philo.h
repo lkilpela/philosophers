@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:12:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:16:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void 	*start_routine(void *arg);
 void	died(t_program *p);
 
 // time
-int 	get_current_time(void);
+long long 	get_current_time(void);
 void	print_time_stamp(t_philo *philo, char *str);
 void	ft_usleep(t_program *p, long long time);
 //utils

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:15:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:19:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ long long	get_current_time(void)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL == -1))
-		return (-1);
-	return ((long long)tv.tv_sec * 1000000 + tv.tv_usec / 1000);
+	if (gettimeofday(&tv, NULL))
+		return (1);
+	return ((tv.tv_sec * 1000000) + (tv.tv_usec / 1000));
 }
 
 void	ft_usleep(t_program *p, long long time)
