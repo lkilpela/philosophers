@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:59:49 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:00:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	thinking(t_program *p)
 {
-	print_time_stamp(p->philo, "is thinking");
+	print_time_stamp(p, p->philo, "is thinking");
 }
 
 static void	eating(t_program *p)
@@ -58,7 +58,7 @@ void	died(t_program *p)
 	if (starved > p->time_to_die)
 	{
 		p->philo->died = 1;
-		print_time_stamp(p->philo, "died\n");
+		print_time_stamp(p, p->philo, "died\n");
 	}
 }
 
