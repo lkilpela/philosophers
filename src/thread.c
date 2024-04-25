@@ -6,8 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:45 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:53:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:39:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int create_thread(t_program *p)
+{
+	
+}
