@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 11:23:42 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:25:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	usleep()
 
 void	time_stamp(t_philo *philo)
 {
-	pthread_mutex_lock(&lock);
-	
+	pthread_mutex_lock(&philo->lock);
+	printf()
+	pthread_mutex_unlock(&philo->lock);
 }

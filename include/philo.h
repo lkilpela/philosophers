@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 11:22:01 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:28:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 typedef struct  s_philo
 {
 	int				id;				// Each philo's unique identifier
-	//int				start_time;
+	int				start_time;
 	int				times_eaten;	// A count of eaten times
 	int				died;
 	int				last_meal;
@@ -52,15 +52,17 @@ typedef struct	s_program
 	t_philo			*philo;
 }				t_program;
 //init
-int	init_program(t_program *p, int ac, char **av);
-int	init_philos(t_program *p);
-int init_mutex_forks(t_program *p);
+int		init_program(t_program *p, int ac, char **av);
+int		init_philos(t_program *p);
+int 	init_mutex_forks(t_program *p);
 
 //
-void *start_routine(void *arg);
+void 	*start_routine(void *arg);
 
+// time
+int 	get_time(void);
 //utils
-void free_all(t_program *p);
-int	ft_atoi(const char *str);
+void	free_all(t_program *p);
+int		ft_atoi(const char *str);
 
 #endif
