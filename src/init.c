@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/24 22:27:58 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 08:53:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	init_mutex_forks(t_program *p)
 	return (0);
 }
 
-int	init_philo(t_program *p)
+int	init_philos(t_program *p)
 {
 	int	i;
 
