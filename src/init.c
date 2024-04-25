@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 11:27:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:11:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int init_one_philo(t_philo *philo, int id,
 {
 	philo->id = id;
 	philo->start_time = get_time();
-	philo->times_eaten = 0;
 	philo->died = 0;
 	philo->last_meal = 0;
 	philo->eating = 0;

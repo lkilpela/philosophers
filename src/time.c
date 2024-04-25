@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 13:09:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:58:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Gets the current time in milliseconds
 // struct timeval where the current time will be stored
 // and a pointer to a struct timezone: usually NULL, as timezone not needed.
-long long get_time(void)
+long long get_current_time(void)
 {
 	struct timeval	tv;
 

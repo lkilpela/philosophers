@@ -6,35 +6,36 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 13:12:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:10:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	thinking(t_philo *philo)
+void	thinking(t_program *p)
 {
 	
 }
 
-void	sleeping(t_philo *philo)
+void	sleeping(t_program *p)
 {
 	
 }
 
-void	eating(t_philo *philo)
+void	eating(t_program *p)
 {
-    philo->last_meal = get_time();
+    p->philo->last_meal = p->philo->start_time + p->time_to_eat;
 }
 // dies if does not eat within a certain amount of time
-void	died(t_philo *philo, int time_to_die)
+void	died(t_program *p)
 {
 	long long	starved;
 
-	starved = get_time() - philo->last_meal;
-	if (starved > time_to_die)
+	starved = get_current_time() - p->philo->last_meal;
+	if (starved > p->time_to_die)
 	{
-		print_time_stamp(philo, "died\n");
+		p->philo->died = 1;
+		print_time_stamp(p->philo, "died\n");
 	}
 }
 
@@ -44,14 +45,14 @@ void	died(t_philo *philo, int time_to_die)
 
 void *start_routine(void *arg)
 {
-    t_philo *philo;
+    t_program *p;
 
-	philo = (t_philo *)arg;
+	p = (t_program *)arg;
 	while(1)
 	{
-		thinking(philo);
-		eating(philo);
-		sleeping(philo);
+		thinking(p);
+		eating(p);
+		sleeping(p);
 	}
 	return (NULL);
 }
