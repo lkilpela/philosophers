@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 15:40:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:43:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define PURPLE "\e[0;35m"
 # define GREY "\e[0;30m"
 # define RED "\e[0;31m"
+# define CYAN "\e[0;36m"
 
 typedef struct  s_philo
 {

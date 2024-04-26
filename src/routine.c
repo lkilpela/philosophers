@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 15:42:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:44:14 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	thinking(t_philo *philo)
 {
-	print_time_stamp(philo, GREY "is thinking" NC);
+	print_time_stamp(philo, CYAN "is thinking" NC);
 }
 
 static void	eating(t_philo *philo)
