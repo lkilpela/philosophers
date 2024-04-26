@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 10:50:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:41:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ static void	eating(t_philo *philo)
 	if (!check_if_died(philo))
 	{
 		// Start eating
-		print_time_stamp(philo, "is eating");
-		
-		philo->last_eaten = get_current_time();
-		philo->times_eaten++;
+		print_time_stamp(philo, "is eating");	
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
+		philo->last_eaten = get_current_time();
+		philo->times_eaten++;
 	}
 
 	// Release forks
@@ -62,6 +61,8 @@ void	*start_routine(void *arg)
 	t_philo	*philo;	
 
 	philo = (t_philo *)arg;
+	
+	philo->last_eaten = get_current_time();
 	if (philo->program->num_of_philos == 1)
 	{
 		ft_usleep(philo->program->time_to_die);
@@ -72,8 +73,8 @@ void	*start_routine(void *arg)
 	{
 		thinking(philo);
 		eating(philo);
-		sleeping(philo);
-		check_if_died(philo);
+		if (!check_if_died(philo))
+			sleeping(philo);
 	}
 	return (NULL);
 }
