@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 15:21:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 10:35:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 void free_all(t_program *p)
 {
-	free(p->philo);
+	int	i;
+
+	i = 0;
+	
+	while (i < p->num_of_philos)
+	{
+		pthread_mutex_destroy(&p->forks[i]);
+		i++;
+	}
 	pthread_mutex_destroy(p->forks);
+	pthread_mutex_destroy(&p->lock);
+	free(p->philo);
 }
 
 static int	ft_is_overflow(int result, int sign, int digit)
