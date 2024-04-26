@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 08:57:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 08:58:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,6 @@ void	*start_routine(void *arg)
 		eating(philo);
 		sleeping(philo);
 		check_if_died(philo);
-
 	}
 	return (NULL);
 }
-
-
