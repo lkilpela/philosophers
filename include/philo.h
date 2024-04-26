@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 10:47:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:40:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@
 # include <sys/time.h>  // gettimeofday, 
 # include <string.h>    // memset
 
-# define FAILURE	1
-# define SUCCESS	0
-# define TRUE		0
-# define FALSE		1
+# define NC	"\e[0m"
+# define YELLOW	"\e[0;33m"
+# define GREEN "\e[0;32m"
+# define BLUE "\e[0;34m"
+# define PURPLE "\e[0;35m"
+# define GREY "\e[0;30m"
+# define RED "\e[0;31m"
 
 typedef struct  s_philo
 {

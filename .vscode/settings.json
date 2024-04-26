@@ -3,6 +3,7 @@
         "queue": "c",
         "stack": "c",
         "random": "c",
-        "mutex": "c"
+        "mutex": "c",
+        "__locale": "c"
     }
 }

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 14:41:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:42:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static void	thinking(t_philo *philo)
 {
-	print_time_stamp(philo, "is thinking");
+	print_time_stamp(philo, GREY "is thinking" NC);
 }
 
 static void	eating(t_philo *philo)
 {
 	// Take forks
 	pthread_mutex_lock(philo->left_fork);
-	print_time_stamp(philo, "has taken a left fork");
+	print_time_stamp(philo, GREEN "has taken a left fork" NC);
 	pthread_mutex_lock(philo->right_fork);
-	print_time_stamp(philo, "has taken a right fork");
+	print_time_stamp(philo, GREEN "has taken a right fork" NC);
 
 	if (!check_if_died(philo))
 	{
 		// Start eating
-		print_time_stamp(philo, "is eating");	
+		print_time_stamp(philo, BLUE "is eating" NC);	
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
 		philo->last_eaten = get_current_time();
@@ -42,7 +42,7 @@ static void	eating(t_philo *philo)
 
 static void	sleeping(t_philo *philo)
 {
-	print_time_stamp(philo, "is sleeping");
+	print_time_stamp(philo, GREY "is sleeping" NC);
 	ft_usleep(philo->program->time_to_sleep);
 }
 
