@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 09:12:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 10:50:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@ static void	eating(t_philo *philo)
 	pthread_mutex_lock(philo->right_fork);
 	print_time_stamp(philo, "has taken a right fork");
 
-	// Start eating
-	print_time_stamp(philo, "is eating");
-	
-	philo->last_eaten = get_current_time();
-	philo->times_eaten++;
-	// Sleep for time_to_eat 
-	ft_usleep(philo->program->time_to_eat);
+	if (!check_if_died(philo))
+	{
+		// Start eating
+		print_time_stamp(philo, "is eating");
+		
+		philo->last_eaten = get_current_time();
+		philo->times_eaten++;
+		// Sleep for time_to_eat 
+		ft_usleep(philo->program->time_to_eat);
+	}
 
 	// Release forks
 	pthread_mutex_unlock(philo->left_fork);
