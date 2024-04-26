@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 08:54:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 08:57:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ static void	sleeping(t_philo *philo)
 	ft_usleep(philo->program->time_to_sleep);
 }
 
+static int	philo_should_continue(t_philo *philo)
+{
+	int	q;
+
+	pthread_mutex_lock(&philo->program->lock);
+	q = philo->program->quit;
+	pthread_mutex_unlock(&philo->program->lock);
+	if(q) 
+		return (0);
+	return ((philo->program->eat_times == 0 
+		|| philo->times_eaten < philo->program->eat_times)
+		&& philo->died != 1);
+}
+
 // void *(*start_routine) (void *)
 // A pointer to the function that the new thread will start executing. 
 //This function should take a single void * argument and return a void *.
@@ -70,16 +84,4 @@ void	*start_routine(void *arg)
 	return (NULL);
 }
 
-int	philo_should_continue(t_philo *philo)
-{
-	int	q;
 
-	pthread_mutex_lock(&philo->program->lock);
-	q = philo->program->quit;
-	pthread_mutex_unlock(&philo->program->lock);
-	if(q) 
-		return (0);
-	return ((philo->program->eat_times == 0 
-		|| philo->times_eaten < philo->program->eat_times)
-		&& philo->died != 1);
-}
