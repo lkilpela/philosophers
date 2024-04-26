@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 22:31:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 08:49:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	init_program(t_program *p, int ac, char **av)
 		return (1);
 	if (pthread_mutex_init(&p->lock, NULL))
 		return (1);
+	p->quit = 0;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 22:40:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 08:49:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_program
 	pthread_mutex_t		*forks;
 	t_philo				*philo;
 	pthread_mutex_t		lock;
+	int					quit;
 }				t_program;
 //init
 int			init_program(t_program *p, int ac, char **av);
