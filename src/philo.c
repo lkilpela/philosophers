@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/25 22:41:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 09:04:02 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ int	main(int ac, char **av)
 	if (init_philos(&p) == 1)
 		return (1);
 	wait_for_philos(&p);
+	free_all(&p);
 }
