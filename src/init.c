@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 09:11:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 10:39:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	init_program(t_program *p, int ac, char **av)
 	{
 		p->eat_times = ft_atoi(av[5]);
 		if (p->eat_times < 0)
-			return (printf("Invalid number_of_time_each_philo must eat"), 1);
+			return (printf("Invalid number_of_time_each_philo must eat.\n"), 1);
 	}
 	if (p->num_of_philos <= 0 || p->num_of_philos > 200)
-		return (printf("Invalid number_of_philosophers"), 1);
+		return (printf("Invalid number_of_philosophers.\n"), 1);
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
-		return (printf("Invalid time value"), 1);
+		return (printf("Invalid time value.\n"), 1);
 	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philo)
 		return (1);
@@ -54,7 +54,6 @@ int	init_program(t_program *p, int ac, char **av)
 		return (1);
 	if (pthread_mutex_init(&p->lock, NULL))
 		return (1);
-	p->quit = 0;
 	return (0);
 }
 

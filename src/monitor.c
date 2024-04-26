@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 09:04:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/26 10:37:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,5 @@ void	check_if_died(t_philo *philo)
 	{
 		philo->died = 1;
 		print_time_stamp(philo, "died");
-		pthread_mutex_lock(&philo->program->lock);
-		philo->program->quit = 1;
-		pthread_mutex_unlock(&philo->program->lock);
 	}
 }
