@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:00:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:39:32 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ typedef struct	s_program
 	long long 			time_to_sleep;
 	int 				num_times_to_eat;		// Number of times each philo must eat
 	pthread_mutex_t		*forks;
-	t_philo				*philo;
+	t_philo				*philos;
 	pthread_mutex_t		lock;
+	pthread_t			observer;	
 }				t_program;
 //init
 int			init_program(t_program *p, int ac, char **av);
@@ -72,7 +73,7 @@ int			init_philos(t_program *p);
 //
 void 		*start_routine(void *arg);
 int			check_if_died(t_philo *philo);
-
+void		*monitor(void *arg);
 // time
 long long 	get_current_time(void);
 void		print_time_mutex(t_philo *philo, char *str);

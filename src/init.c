@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:21:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:40:56 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ static int	init_input(t_program *p, int ac, char **av)
 int	init_program(t_program *p, int ac, char **av)
 {
 	init_input(p, ac, av);
-	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
-	if (!p->philo)
+	p->philos = malloc(p->num_of_philos * sizeof(t_philo));
+	if (!p->philos)
 		return (1);
 	if (init_mutex_forks(p))
 		return (1);
 	if (pthread_mutex_init(&p->lock, NULL))
+		return (1);
+	if (pthread_create(&p->observer, NULL, monitor, p->philos) != 0)
 		return (1);
 	return (0);
 }
@@ -88,7 +90,7 @@ int	init_philos(t_program *p)
 	i = 0;
 	while (i < p->num_of_philos)
 	{
-		if (init_one_philo(&p->philo[i], i, p))
+		if (init_one_philo(&p->philos[i], i, p))
 			return (1);
 		i++;
 	}
