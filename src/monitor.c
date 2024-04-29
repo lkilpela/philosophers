@@ -6,28 +6,26 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 15:39:21 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:12:59 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // dies if does not eat within a certain amount of time
+// if too much time has passed since philo's last ate
 int	check_if_died(t_philo *philo)
 {
-	long long starved;
-
 	if (!philo->died)
 	{
-		starved = get_current_time() - philo->last_eaten;
-		//printf("get_current_time: %lld\n - last_eatean: %lld\n", get_current_time() - philo->start_time, philo->last_eaten - philo->start_time);
-		if (starved >= philo->program->time_to_die)
+		if (get_current_time() >= philo->last_ate
+			+ philo->program->time_to_die)
 		{
-			//printf("starved: %lldms\n time_to_die: %lld\n", starved, philo->program->time_to_die);
 			philo->died = 1;
 			print_time_stamp(philo, RED "died" NC);
-			
 		}
+		else
+			philo->last_ate = get_current_time();
 	}
 	return (philo->died);
 }

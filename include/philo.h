@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 15:43:58 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:13:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct  s_philo
 	long long			start_time;
 	int					times_eaten;	// A count of eaten times
 	int					died;			// flag
-	long long			last_eaten;		// flag	
+	long long			last_ate;		// Philo's last eaten time	
 	pthread_mutex_t		*left_fork;		// Pointer to mutex: left fork philo uses
 	pthread_mutex_t		*right_fork;	// Pointer to mutex: right fork philo uses
 	pthread_t			thread;	
