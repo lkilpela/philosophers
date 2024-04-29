@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 11:55:42 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 12:05:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	test(t_philo *philo)
 {
 	if(philo->state == HUNGRY
-		&& philo->left_state != EATING && philo->right_state != EATING)
+		&& philo->left_philo->state != EATING 
+		&& philo->right_philo->state != EATING)
 	{
 		philo->state = EATING;
 		pthread_mutex_unlock(philo->left_fork);
@@ -46,8 +47,8 @@ void	put_forks(t_philo *philo)
 	philo->state = THINKING;
 	print_time(philo, GREEN "is thinking" NC);
 
-	test(philo);
-	test(philo);
+	test(philo->left_philo);
+	test(philo->right_philo);
 	pthread_mutex_unlock(&philo->program->lock); // exit critical region
 }
 
