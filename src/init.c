@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:58:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:59:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init_mutex_forks(t_program *p)
+static int	init_mutex_forks(t_program *p)
 {
 	int	i;
 
@@ -62,7 +62,7 @@ int	init_program(t_program *p, int ac, char **av)
 	return (0);
 }
 
-int init_one_philo(t_philo *philo, int i, t_program *p)
+static int init_one_philo(t_philo *philo, int i, t_program *p)
 {
 	philo->id = i + 1;
 	philo->start_time = get_current_time();
