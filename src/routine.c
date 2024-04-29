@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 13:57:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:10:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,20 @@ static void	thinking(t_philo *philo)
 static void	eating(t_philo *philo)
 {
 	// Take forks
-	pthread_mutex_lock(philo->left_fork);
-	print_time_mutex(philo, GREEN "has taken a left fork" NC);
 	pthread_mutex_lock(philo->right_fork);
 	print_time_mutex(philo, GREEN "has taken a right fork" NC);
-	// Start eating
-	print_time_mutex(philo, BLUE "is eating" NC);	
+	if (philo->program->num_of_philos == 1)
+	{
+		ft_usleep(philo->program->time_to_die);
+		pthread_mutex_unlock(philo->right_fork);
+		return ;
+	}
+	pthread_mutex_lock(philo->left_fork);
+	print_time_mutex(philo, GREEN "has taken a left fork" NC);	
 	if (!check_if_died(philo))
 	{
+			// Start eating
+		print_time_mutex(philo, BLUE "is eating" NC);
 		pthread_mutex_lock(&philo->program->lock);
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
@@ -64,12 +70,7 @@ void	*start_routine(void *arg)
 	philo = (t_philo *)arg;
 	
 	philo->last_ate = get_current_time();
-	if (philo->program->num_of_philos == 1)
-	{
-		ft_usleep(philo->program->time_to_die);
-		pthread_mutex_unlock(philo->right_fork);
-		return (NULL);
-	}
+
 	if (philo->id % 2 == 0)
 		ft_usleep(1);
 	while (philo_should_continue(philo))
