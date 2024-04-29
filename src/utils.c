@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/26 10:36:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:38:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void free_all(t_program *p)
 	}
 	free(p->forks);
 	pthread_mutex_destroy(&p->lock);
-	free(p->philo);
+	free(p->philos);
 }
 
 static int	ft_is_overflow(int result, int sign, int digit)
