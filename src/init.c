@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:57:34 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:58:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	init_mutex_forks(t_program *p)
 	return (0);
 }
 
-int	init_input(t_program *p, int ac, char **av)
+static int	init_input(t_program *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
 	p->time_to_die = ft_atoi(av[2]);
