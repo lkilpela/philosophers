@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 10:15:02 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:37:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ int init_one_philo(t_philo *philo, int i, t_program *p)
 	philo->program = p;
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
 		return (1);
+	philo->state = -1;
+	philo->left_state = (philo->id - 1 + philo->program->num_of_philos)
+		% philo->program->num_of_philos;
+	philo->right_state = (philo->id + 1) % philo->program->num_of_philos;
 	return (0);
 }
 
@@ -93,23 +97,5 @@ int	init_philos(t_program *p)
 	}
 	return (0);
 }
-			
-/*
-The pthread_create function in C is used to create a new thread.
-It has the following parameters:
 
-pthread_t *thread: A pointer to a pthread_t variable that the function will fill
-					with the ID of the newly created thread.
 
-const pthread_attr_t *attr: A pointer to a pthread_attr_t structure 
-							that specifies thread attributes, 
-							or NULL for the default attributes.
-
-void *(*start_routine) (void *): A pointer to the function that the 
-								new thread will start executing. 
-								This function should take a single void * arg
-								and return a void *.
-
-void *arg: A pointer to the argument that will be passed to 
-			the start_routine function.
-*/

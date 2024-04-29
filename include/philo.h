@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 10:50:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:44:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,27 @@
 # define RED "\e[0;31m"
 # define CYAN "\e[0;36m"
 
-enum e_state
+typedef enum e_state
 {
 	THINKING,
 	HUNGRY,
 	EATING
-};
+} 			t_state;
 
 typedef struct  s_philo
 {
-	int					id;				// Each philo's unique identifier
+	int					id;			// Each philo's unique identifier
 	long long			start_time;
-	int					times_eaten;	// A count of eaten times
-	int					died;			// flag
-	long long			last_ate;		// Philo's last eaten time	
-	pthread_mutex_t		*left_fork;		// Pointer to mutex: left fork philo uses
-	pthread_mutex_t		*right_fork;	// Pointer to mutex: right fork philo uses
+	int					times_eaten;// A count of eaten times
+	int					died;		// flag
+	long long			last_ate;	// Philo's last eaten time	
+	pthread_mutex_t		*left_fork;	// Pointer to mutex: left fork philo uses
+	pthread_mutex_t		*right_fork;// Pointer to mutex: right fork philo uses
 	pthread_t			thread;	
-	struct s_program	*program;		// Philo's thread
+	struct s_program	*program;
+	t_state				state;
+	int					*left_state; // the index of the philosopher to the left of the current philosopher
+	int					*right_state;
 }               t_philo;
 
 typedef struct	s_program
@@ -73,8 +76,9 @@ int			check_if_died(t_philo *philo);
 
 // time
 long long 	get_current_time(void);
-void		print_time_stamp(t_philo *philo, char *str);
+void		print_time_mutex(t_philo *philo, char *str);
 void		ft_usleep(long long time);
+void		print_time(t_philo *philo, char *str);
 //utils
 void		free_all(t_program *p);
 int			ft_atoi(const char *str);

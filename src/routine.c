@@ -6,13 +6,81 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 10:19:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:48:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static void	thinking(t_philo *philo)
+{
+	print_time_stamp(philo, CYAN "is thinking" NC);
+}
+
+void	test(t_philo *philo)
+{
+	if(philo->state == HUNGRY
+		&& philo->left_state != EATING && philo->right_state != EATING)
+	{
+		philo->state = EATING;
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
+}
+
+void	take_forks(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->program->lock); // enter critical region
+
+	// If philo is hungry , try to acquire 2 forks
+	philo->state = HUNGRY;
+	print_time(philo, GREEN "has taken a fork" NC);
+
+	test(philo->id);
+	pthread_mutex_unlock(&philo->program->lock); // exit critical region
+
+	pthread_mutex_lock(philo->left_fork);
+	pthread_mutex_lock(philo->right_fork);
+}
+
+void	put_forks(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->program->lock); // enter critical region
+
+	// philo has finished eating
+	philo->state = THINKING;
+	print_time(philo, GREEN "is thinking" NC);
+
+	test(philo->left_state);
+	test(philo->right_state);
+	pthread_mutex_unlock(&philo->program->lock); // exit critical region
+}
+
+void	*start_routine(void *arg)
+{
+	t_philo	*philo;	
+
+	philo = (t_philo *)arg;
+	
+	philo->last_ate = get_current_time();
+	if (philo->program->num_of_philos == 1)
+	{
+		ft_usleep(philo->program->time_to_die);
+		check_if_died(philo);
+		return (NULL);
+	}
+	while (philo_should_continue(philo))
+	{
+		take_forks(philo);
+		put_forks(philo);
+		if (!check_if_died(philo))
+			sleeping(philo);
+	}
+	return (NULL);
+}
+
+
+/*static void	thinking(t_philo *philo)
 {
 	print_time_stamp(philo, CYAN "is thinking" NC);
 }
@@ -77,4 +145,4 @@ void	*start_routine(void *arg)
 			sleeping(philo);
 	}
 	return (NULL);
-}
+}*/

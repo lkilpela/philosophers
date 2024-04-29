@@ -4,6 +4,7 @@
         "stack": "c",
         "random": "c",
         "mutex": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "locale": "c"
     }
 }
