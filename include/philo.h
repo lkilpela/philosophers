@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 12:01:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:51:32 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@
 # define RED "\e[0;31m"
 # define CYAN "\e[0;36m"
 
-typedef enum e_state
+/*typedef enum e_state
 {
 	THINKING,
 	HUNGRY,
 	EATING
-} 			t_state;
+} 			t_state;*/
 
 typedef struct  s_philo
 {
@@ -49,9 +49,9 @@ typedef struct  s_philo
 	pthread_mutex_t		*right_fork;// Pointer to mutex: right fork philo uses
 	pthread_t			thread;	
 	struct s_program	*program;
-	t_state				state;
-	struct  s_philo		*left_philo; // the index of the philosopher to the left of the current philosopher
-	struct  s_philo		*right_philo;
+	//t_state				state;
+	//struct  s_philo		*left_philo; // the index of the philosopher to the left of the current philosopher
+	///struct  s_philo		*right_philo;
 }               t_philo;
 
 typedef struct	s_program
