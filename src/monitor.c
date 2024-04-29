@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:32:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:37:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ void	dead_monitor(t_program *p)
 			i++;
 		}
 	}
+	i = 0;
+	pthread_mutex_lock(&p->lock);
+	while (i < p->num_of_philos)
+	{
+		p->philos[i].died = 1;
+	}
+	pthread_mutex_unlock(&p->lock);
 }

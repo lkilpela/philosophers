@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:32:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:35:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ typedef struct	s_program
 	int 				num_times_to_eat;		// Number of times each philo must eat
 	pthread_mutex_t		*forks;
 	t_philo				*philos;
-	pthread_mutex_t		lock;
-	//pthread_t			observer;	
+	pthread_mutex_t		lock;	
 }				t_program;
 //init
 int			init_program(t_program *p, int ac, char **av);
