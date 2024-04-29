@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:42:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:07:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	wait_for_philos(t_program *p)
 			free_all(p);
 		i++;
 	}
-	if (pthread_join(p->observer, NULL) != 0)
-		free_all(p);
+	//if (pthread_join(p->observer, NULL) != 0)
+	//	free_all(p);
 }
 
 int	main(int ac, char **av)
