@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:10:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:15:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static void	eating(t_philo *philo)
 	{
 			// Start eating
 		print_time_mutex(philo, BLUE "is eating" NC);
-		pthread_mutex_lock(&philo->program->lock);
+		//pthread_mutex_lock(&philo->program->lock);
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
-		pthread_mutex_unlock(&philo->program->lock);
+		//pthread_mutex_unlock(&philo->program->lock);
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
 	}
@@ -68,9 +68,7 @@ void	*start_routine(void *arg)
 	t_philo	*philo;	
 
 	philo = (t_philo *)arg;
-	
 	philo->last_ate = get_current_time();
-
 	if (philo->id % 2 == 0)
 		ft_usleep(1);
 	while (philo_should_continue(philo))
@@ -82,7 +80,6 @@ void	*start_routine(void *arg)
 	}
 	return (NULL);
 }
-
 
 /*// if philosopher i is hungry and both neighbours are not eating then eat
 // forks are no longer needed for this eat session
