@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:37:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:41:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,30 @@ int	check_if_died(t_philo *philo)
 	return (dead);
 }
 
-void	dead_monitor(t_program *p)
+int	dead(t_program *p)
 {
 	int	i;
 
 	i = 0;
+	while (i < p->num_of_philos)
+	{
+		if (check_if_died(&p->philos[i]) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+		
+void	dead_monitor(t_program *p)
+{
+	int	i;
+	
+	i = 0;
 	while (1)
 	{
-		while (i < p->num_of_philos)
-		{
-			if (check_if_died(&p->philos[i]) == 1)
-				break ;
-			i++;
-		}
+		if (dead(p))
+			break ;
 	}
-	i = 0;
 	pthread_mutex_lock(&p->lock);
 	while (i < p->num_of_philos)
 	{
