@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:53:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:57:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,29 @@ int	init_mutex_forks(t_program *p)
 	return (0);
 }
 
-int	init_program(t_program *p, int ac, char **av)
+int	init_input(t_program *p, int ac, char **av)
 {
 	p->num_of_philos = ft_atoi(av[1]);
 	p->time_to_die = ft_atoi(av[2]);
 	p->time_to_eat = ft_atoi(av[3]);
 	p->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 5)
-		p->eat_times = 0;
+		p->num_times_to_eat = 0;
 	else
 	{
-		p->eat_times = ft_atoi(av[5]);
-		if (p->eat_times < 0)
+		p->num_times_to_eat = ft_atoi(av[5]);
+		if (p->num_times_to_eat < 0)
 			return (printf("Invalid number_of_time_each_philo must eat.\n"), 1);
 	}
 	if (p->num_of_philos <= 0 || p->num_of_philos > 200)
 		return (printf("Invalid number_of_philosophers.\n"), 1);
 	if (p->time_to_die < 60 || p->time_to_eat < 60 || p->time_to_sleep < 60)
 		return (printf("Invalid time value.\n"), 1);
+}
+
+int	init_program(t_program *p, int ac, char **av)
+{
+	init_input(p, ac, av);
 	p->philo = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philo)
 		return (1);

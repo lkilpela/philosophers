@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:45:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:57:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static void	sleeping(t_philo *philo)
 
 static int	philo_should_continue(t_philo *philo)
 {
-	return ((philo->program->eat_times == 0 
-		|| philo->times_eaten < philo->program->eat_times)
+	return ((philo->program->num_times_to_eat == 0 
+		|| philo->times_eaten < philo->program->num_times_to_eat)
 		&& philo->died != 1);
 }
 
@@ -143,8 +143,8 @@ static void	sleeping(t_philo *philo)
 
 static int	philo_should_continue(t_philo *philo)
 {
-	return ((philo->program->eat_times == 0 
-		|| philo->times_eaten < philo->program->eat_times)
+	return ((philo->program->num_times_to_eat == 0 
+		|| philo->times_eaten < philo->program->num_times_to_eat)
 		&& philo->died != 1);
 }
 

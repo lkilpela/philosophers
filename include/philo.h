@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 13:51:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:57:14 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct	s_program
 	long long 			time_to_die;
 	long long 			time_to_eat;
 	long long 			time_to_sleep;
-	int 				eat_times;		// Number of times each philo must eat
+	int 				num_times_to_eat;		// Number of times each philo must eat
 	pthread_mutex_t		*forks;
 	t_philo				*philo;
 	pthread_mutex_t		lock;
