@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:01:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:21:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,6 @@ static int init_one_philo(t_philo *philo, int i, t_program *p)
 	philo->program = p;
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
 		return (1);
-	//philo->state = -1;
-	//philo->left_philo = &p->philo[(i + philo->program->num_of_philos)
-	//	% philo->program->num_of_philos];
-	//philo->right_philo = &p->philo[(philo->id + 1) 
-	//	% philo->program->num_of_philos];
 	return (0);
 }
 

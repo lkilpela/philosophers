@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:21:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:21:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,96 +78,3 @@ void	*start_routine(void *arg)
 	}
 	return (NULL);
 }
-
-/*// if philosopher i is hungry and both neighbours are not eating then eat
-// forks are no longer needed for this eat session
-static void	try_eat(t_philo *philo)
-{
-	if (philo->state == HUNGRY
-		&& philo->left_philo->state != EATING 
-		&& philo->right_philo->state != EATING)
-	{
-		philo->state = EATING;
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
-	}
-}
-
-static void	take_forks(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->program->lock); // enter critical region
-	if (!check_if_died(philo))
-	{
-		// If philo is hungry , try to acquire 2 forks
-		philo->state = HUNGRY;
-		print_time(philo, GREEN "has taken a fork" NC);
-		try_eat(philo);
-	}
-	pthread_mutex_unlock(&philo->program->lock); // exit critical region
-	pthread_mutex_lock(philo->left_fork);
-	pthread_mutex_lock(philo->right_fork);
-}
-
-static void	eating(t_philo *philo)
-{
-	if (!check_if_died(philo))
-	{
-		// Start eating
-		print_time_mutex(philo, BLUE "is eating" NC);	
-		// Sleep for time_to_eat 
-		ft_usleep(philo->program->time_to_eat);
-		philo->last_ate = get_current_time();
-		philo->times_eaten++;
-	}
-}
-// Philo has finished eating, now neighbour can eat
-static void	put_forks(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->program->lock); // enter critical region
-
-	// philo has finished eating
-	philo->state = THINKING;
-	print_time(philo, GREEN "is thinking" NC);
-
-	try_eat(philo->left_philo);
-	try_eat(philo->right_philo);
-	pthread_mutex_unlock(&philo->program->lock); // exit critical region
-}
-
-static void	sleeping(t_philo *philo)
-{
-	print_time_mutex(philo, GREY "is sleeping" NC);
-	ft_usleep(philo->program->time_to_sleep);
-}
-
-static int	philo_should_continue(t_philo *philo)
-{
-	return ((philo->program->num_times_to_eat == 0 
-		|| philo->times_eaten < philo->program->num_times_to_eat)
-		&& philo->died != 1);
-}
-
-void	*start_routine(void *arg)
-{
-	t_philo	*philo;	
-
-	philo = (t_philo *)arg;
-	
-	philo->last_ate = get_current_time();
-	if (philo->program->num_of_philos == 1)
-	{
-		ft_usleep(philo->program->time_to_die);
-		check_if_died(philo);
-		return (NULL);
-	}
-	while (philo_should_continue(philo))
-	{
-		//thinking(philo);
-		take_forks(philo);
-		eating(philo);
-		put_forks(philo);
-		if (!check_if_died(philo))
-			sleeping(philo);
-	}
-	return (NULL);
-}*/
