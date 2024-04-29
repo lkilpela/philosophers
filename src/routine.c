@@ -6,16 +6,11 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 11:48:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:55:42 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static void	thinking(t_philo *philo)
-{
-	print_time_stamp(philo, CYAN "is thinking" NC);
-}
 
 void	test(t_philo *philo)
 {
@@ -36,7 +31,7 @@ void	take_forks(t_philo *philo)
 	philo->state = HUNGRY;
 	print_time(philo, GREEN "has taken a fork" NC);
 
-	test(philo->id);
+	test(philo);
 	pthread_mutex_unlock(&philo->program->lock); // exit critical region
 
 	pthread_mutex_lock(philo->left_fork);
@@ -51,9 +46,22 @@ void	put_forks(t_philo *philo)
 	philo->state = THINKING;
 	print_time(philo, GREEN "is thinking" NC);
 
-	test(philo->left_state);
-	test(philo->right_state);
+	test(philo);
+	test(philo);
 	pthread_mutex_unlock(&philo->program->lock); // exit critical region
+}
+
+static void	sleeping(t_philo *philo)
+{
+	print_time_mutex(philo, GREY "is sleeping" NC);
+	ft_usleep(philo->program->time_to_sleep);
+}
+
+static int	philo_should_continue(t_philo *philo)
+{
+	return ((philo->program->eat_times == 0 
+		|| philo->times_eaten < philo->program->eat_times)
+		&& philo->died != 1);
 }
 
 void	*start_routine(void *arg)

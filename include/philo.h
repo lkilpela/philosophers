@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 11:44:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:51:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct  s_philo
 	pthread_t			thread;	
 	struct s_program	*program;
 	t_state				state;
-	int					*left_state; // the index of the philosopher to the left of the current philosopher
-	int					*right_state;
+	t_state				left_state; // the index of the philosopher to the left of the current philosopher
+	t_state				right_state;
 }               t_philo;
 
 typedef struct	s_program
