@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 10:12:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:19:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // dies if does not eat within a certain amount of time
-// if too much time has passed since philo's last ate
+// if too much time has passed since philo's last ate & no eating again -> dead
 int	check_if_died(t_philo *philo)
 {
 	if (!philo->died)
@@ -24,8 +24,6 @@ int	check_if_died(t_philo *philo)
 			philo->died = 1;
 			print_time_stamp(philo, RED "died" NC);
 		}
-		else
-			philo->last_ate = get_current_time();
 	}
 	return (philo->died);
 }

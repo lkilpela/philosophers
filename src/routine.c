@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 10:14:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:19:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	eating(t_philo *philo)
 		print_time_stamp(philo, BLUE "is eating" NC);	
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
-		//philo->last_eaten = get_current_time();
+		philo->last_ate = get_current_time();
 		philo->times_eaten++;
 	}
 
@@ -62,7 +62,7 @@ void	*start_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	
-	//philo->last_ate = get_current_time();
+	philo->last_ate = get_current_time();
 	if (philo->program->num_of_philos == 1)
 	{
 		ft_usleep(philo->program->time_to_die);
