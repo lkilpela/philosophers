@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 15:39:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:06:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ typedef struct  s_philo
 	pthread_mutex_t		*right_fork;// Pointer to mutex: right fork philo uses
 	pthread_t			thread;	
 	struct s_program	*program;
-	//t_state				state;
-	//struct  s_philo		*left_philo; // the index of the philosopher to the left of the current philosopher
-	///struct  s_philo		*right_philo;
 }               t_philo;
 
 typedef struct	s_program
@@ -64,7 +61,7 @@ typedef struct	s_program
 	pthread_mutex_t		*forks;
 	t_philo				*philos;
 	pthread_mutex_t		lock;
-	pthread_t			observer;	
+	//pthread_t			observer;	
 }				t_program;
 //init
 int			init_program(t_program *p, int ac, char **av);
