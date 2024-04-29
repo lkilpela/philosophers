@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:15:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:45:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	eating(t_philo *philo)
 {
 	// Take forks
 	pthread_mutex_lock(philo->right_fork);
-	print_time_mutex(philo, GREEN "has taken a right fork" NC);
+	print_time_mutex(philo, GREEN "has taken a fork" NC);
 	if (philo->program->num_of_philos == 1)
 	{
 		ft_usleep(philo->program->time_to_die);
@@ -29,19 +29,18 @@ static void	eating(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->left_fork);
-	print_time_mutex(philo, GREEN "has taken a left fork" NC);	
+	print_time_mutex(philo, GREEN "has taken a fork" NC);	
 	if (!check_if_died(philo))
 	{
-			// Start eating
+		// Start eating
 		print_time_mutex(philo, BLUE "is eating" NC);
-		//pthread_mutex_lock(&philo->program->lock);
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
-		//pthread_mutex_unlock(&philo->program->lock);
+
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
 	}
-
+	//pthread_mutex_unlock(&philo->program->lock);
 	// Release forks
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
