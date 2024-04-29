@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 14:57:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:21:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	eating(t_philo *philo)
 		// Sleep for time_to_eat 
 		ft_usleep(philo->program->time_to_eat);
 	}
-	//pthread_mutex_unlock(&philo->program->lock);
 	// Release forks
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
