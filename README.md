@@ -1,5 +1,5 @@
 <h1 align="center">
-	🚰 PIPEX
+	<img src="https://github.com/lkilpela/42-project-badges/blob/main/badges/philosopherse.png" />
 
 </h1>
 
