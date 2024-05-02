@@ -80,6 +80,22 @@ git clone https://github.com/lkilpela/philosophers.git
 
 ## 📝 Evaluation Requirements
 
+The `philosophers` project will be evaluated based on the following criteria:
+
+1. **Correctness**: The program should correctly implement the Dining Philosophers problem. No philosopher should be able to eat with only one fork, and no two philosophers should be able to use the same fork at the same time.
+
+2. **Deadlock Prevention**: The program should prevent deadlocks. At no point should the program get stuck because each philosopher is holding one fork and waiting for the other.
+
+3. **Starvation Prevention**: The program should prevent starvation. Each philosopher should be able to eat periodically, and no philosopher should die because they can't get access to the forks.
+
+4. **Concurrency**: The program should run the philosophers concurrently. Each philosopher should be represented by a separate thread.
+
+5. **Output**: The program should output the status of each philosopher (thinking, eating, sleeping, died) with timestamps in milliseconds.
+
+6. **Code Quality**: The code should be well-organized and easy to read. It should be free of memory leaks and undefined behavior.
+
+Please note that these are general guidelines and the actual evaluation criteria may vary.
+
 ### 🧑‍💻 Peer Evaluations (3/3)
 
 Here are some of the comments received during the peer evaluation of the `philosophers` project:
