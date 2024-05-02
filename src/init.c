@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 13:33:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:57:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_program(t_program *p, int ac, char **av)
 	return (0);
 }
 
-static int init_one_philo(t_philo *philo, int i, t_program *p)
+static int	init_one_philo(t_philo *philo, int i, t_program *p)
 {
 	philo->id = i + 1;
 	philo->start_time = get_current_time();
@@ -74,9 +74,9 @@ static int init_one_philo(t_philo *philo, int i, t_program *p)
 	philo->died = 0;
 	philo->last_ate = get_current_time();
 	philo->left_fork = &p->forks[i];
-	if(i == 0) 
+	if (i == 0)
 		philo->right_fork = &p->forks[p->num_of_philos - 1];
-	else 
+	else
 		philo->right_fork = &p->forks[(i - 1)];
 	philo->program = p;
 	if (pthread_create(&philo->thread, NULL, start_routine, philo) != 0)
@@ -87,7 +87,7 @@ static int init_one_philo(t_philo *philo, int i, t_program *p)
 int	init_philos(t_program *p)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < p->num_of_philos)
 	{

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 13:17:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:58:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	wait_for_philos(t_program *p)
 		i++;
 	}
 }
-
 
 int	main(int ac, char **av)
 {

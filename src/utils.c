@@ -6,18 +6,17 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:26:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:02:44 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void free_all(t_program *p)
+void	free_all(t_program *p)
 {
 	int	i;
 
 	i = 0;
-	
 	while (i < p->num_of_philos)
 	{
 		pthread_mutex_destroy(&p->forks[i]);
@@ -29,10 +28,10 @@ void free_all(t_program *p)
 	free(p->philos);
 }
 
-static int	ft_is_overflow(int result, int sign, int digit)
+static int	ft_is_overflow(unsigned long long result, int sign, int digit)
 {
-	int max;
-	int min;
+	int	max;
+	int	min;
 
 	max = 2147483647;
 	min = -2147483648;
@@ -50,7 +49,7 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
-	while (*str == '\t' || *str == '\n' || *str == '\v' 
+	while (*str == '\t' || *str == '\n' || *str == '\v'
 		|| *str == '\f' || *str == '\r' || *str == ' ')
 		str++;
 	if (*str == '-')

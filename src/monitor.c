@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 13:16:33 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:04:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	check_if_died(t_philo *philo)
 	int	enough_eating;
 
 	pthread_mutex_lock(&philo->program->lock);
-	enough_eating = philo->program->num_times_to_eat && philo->times_eaten >= philo->program->num_times_to_eat;
+	enough_eating = philo->program->num_times_to_eat
+		&& philo->times_eaten >= philo->program->num_times_to_eat;
 	if (!philo->died && !enough_eating)
 	{
 		if (get_current_time() >= philo->last_ate
@@ -48,18 +49,18 @@ int	dead(t_program *p)
 	}
 	return (0);
 }
-		
+
 void	dead_monitor(t_program *p)
 {
 	int	i;
-	
+
 	i = 0;
 	while (1)
 	{
 		if (dead(p))
 			break ;
 	}
-	if(!p->num_times_to_eat)
+	if (!p->num_times_to_eat)
 	{
 		pthread_mutex_lock(&p->lock);
 		while (i < p->num_of_philos)
