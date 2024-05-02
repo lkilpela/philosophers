@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 14:58:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:09:32 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	{
 		if (init_philos(&p) == 1)
 			return (1);
-		dead_monitor(&p);
+		monitor_philos(&p);
 		wait_for_philos(&p);
 	}
 	free_all(&p);

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 16:03:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:07:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_philo_status(t_philo *philo)
 	return (quit);
 }
 
-int	dead(t_program *p)
+static int	any_philo_died(t_program *p)
 {
 	int	i;
 
@@ -54,14 +54,14 @@ int	dead(t_program *p)
 
 // checking if any philosopher has died 
 // and stopping the simulation if a philosopher has died
-void	dead_monitor(t_program *p)
+void	monitor_philos(t_program *p)
 {
 	int	i;
 
 	i = 0;
 	while (1)
 	{
-		if (dead(p))
+		if (any_philo_died(p))
 			break ;
 	}
 	if (!p->num_times_to_eat)
