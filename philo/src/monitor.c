@@ -6,14 +6,16 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 15:04:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:51:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// dies if does not eat within a certain amount of time
+// checks if a philosopher has died or has eaten enough times
 // if too much time has passed since philo's last ate & no eating again -> dead
+// enough_eating: true if num_times_to_eat is non-zero
+// & times_eaten >= num_times_to_eat
 int	check_if_died(t_philo *philo)
 {
 	int	quit;
