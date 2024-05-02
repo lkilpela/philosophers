@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 12:59:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:17:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	eating(t_philo *philo)
 			print_time(philo, "is eating");
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
-		printf("times eaten: %d \n", philo->times_eaten);
 		pthread_mutex_unlock(&philo->program->lock);
 
 		// Sleep for time_to_eat 

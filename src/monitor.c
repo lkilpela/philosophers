@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 12:40:36 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:16:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 // if too much time has passed since philo's last ate & no eating again -> dead
 int	check_if_died(t_philo *philo)
 {
-	int	dead;
+	int	quit;
+	int	enough_eating;
 
 	pthread_mutex_lock(&philo->program->lock);
-	if (!philo->died && philo->times_eaten < philo->program->num_times_to_eat)
+	enough_eating = philo->program->num_times_to_eat && philo->times_eaten >= philo->program->num_times_to_eat;
+	if (!philo->died && !enough_eating)
 	{
 		if (get_current_time() >= philo->last_ate
 			+ philo->program->time_to_die)
@@ -28,9 +30,9 @@ int	check_if_died(t_philo *philo)
 			philo->died = 1;
 		}
 	}
-	dead = philo->died || philo->times_eaten >= philo->program->num_times_to_eat;
+	quit = philo->died || enough_eating;
 	pthread_mutex_unlock(&philo->program->lock);
-	return (dead);
+	return (quit);
 }
 
 int	dead(t_program *p)
