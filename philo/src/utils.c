@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 15:02:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:21:32 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,6 @@ void	free_all(t_program *p)
 	pthread_mutex_destroy(&p->lock);
 	pthread_mutex_destroy(&p->print_lock);
 	free(p->philos);
-}
-
-static int	ft_is_overflow(unsigned long long result, int sign, int digit)
-{
-	int	max;
-	int	min;
-
-	max = 2147483647;
-	min = -2147483648;
-	if ((sign == 1 && result > (max - digit) / 10)
-		|| (sign == -1 && result < (min + digit) / 10))
-		return (1);
-	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -61,8 +48,6 @@ int	ft_atoi(const char *str)
 		if (!((unsigned char)*str >= '0' && (unsigned char)*str <= '9'))
 			return (-1);
 		digit = *str - '0';
-		if (ft_is_overflow(result, sign, digit))
-			return (0);
 		result = (result * 10) + (digit * sign);
 		str++;
 	}
