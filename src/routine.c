@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:48:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 08:57:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	*start_routine(void *arg)
 	t_philo	*philo;	
 
 	philo = (t_philo *)arg;
-	philo->last_ate = get_current_time();
 	if (philo->id % 2 == 0)
 		ft_usleep(50);
 	while (philo_should_continue(philo))
