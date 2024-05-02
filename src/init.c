@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:22:07 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:10:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:33:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int	init_input(t_program *p, int ac, char **av)
 
 int	init_program(t_program *p, int ac, char **av)
 {
-	init_input(p, ac, av);
+	if (init_input(p, ac, av))
+		return (1);
 	p->philos = malloc(p->num_of_philos * sizeof(t_philo));
 	if (!p->philos)
 		return (1);
