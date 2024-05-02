@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 15:05:33 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:44 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	eating(t_philo *philo)
 	print_time_mutex(philo, GREEN "has taken a fork" NC);
 	pthread_mutex_lock(philo->left_fork);
 	print_time_mutex(philo, GREEN "has taken a fork" NC);
-	if (!check_if_died(philo))
+	if (!check_philo_status(philo))
 	{
 		pthread_mutex_lock(&philo->program->lock);
 		if (!philo->died)
@@ -65,7 +65,7 @@ void	*start_routine(void *arg)
 	{
 		thinking(philo);
 		eating(philo);
-		if (!check_if_died(philo))
+		if (!check_philo_status(philo))
 			sleeping(philo);
 	}
 	return (NULL);

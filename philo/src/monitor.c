@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 16:01:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:24 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // if too much time has passed since philo's last ate & no eating again -> dead
 // enough_eating: true if num_times_to_eat is non-zero
 // & times_eaten >= num_times_to_eat
-int	check_if_died(t_philo *philo)
+int	check_philo_status(t_philo *philo)
 {
 	int	quit;
 	int	enough_eating;
@@ -45,7 +45,7 @@ int	dead(t_program *p)
 	i = 0;
 	while (i < p->num_of_philos)
 	{
-		if (check_if_died(&p->philos[i]) == 1)
+		if (check_philo_status(&p->philos[i]) == 1)
 			return (1);
 		i++;
 	}

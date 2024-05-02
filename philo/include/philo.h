@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 15:13:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			init_philos(t_program *p);
 
 // cycle
 void		*start_routine(void *arg);
-int			check_if_died(t_philo *philo);
+int			check_philo_status(t_philo *philo);
 void		dead_monitor(t_program *p);
 
 // time
