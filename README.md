@@ -56,6 +56,28 @@ git clone https://github.com/lkilpela/philosophers.git
 2. Navigate into the project directory: `cd philosophers/philo`
 3. Compile the project: `make`
 
+### 🚀 How to Use
+
+1. Run the program with five parameters:
+
+- `num_of_philos`: The number of philosophers.
+- `time_to_die`: The time in milliseconds a philosopher will die if they don't start eating.
+- `time_to_eat`: The time in milliseconds a philosopher spends eating.
+- `time_to_sleep`: The time in milliseconds a philosopher spends sleeping.
+- `num_times_to_eat` (optional): The number of times each philosopher must eat before the simulation ends.
+
+Example:
+
+Do not test with more than 200 philosophers.
+Do not test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60 ms.
+Test 1 800 200 200. The philosopher should not eat and should die.
+Test 5 800 200 200. No philosopher should die.
+Test 5 800 200 200 7. No philosopher should die and the simulation should stop when every philosopher has eaten at least 7 times.
+Test 4 410 200 200. No philosopher should die.
+Test 4 310 200 100. One philosopher should die.
+Test with 2 philosophers and check the different times: a death delayed by more than 10 ms is unacceptable.
+Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time, that they don't steal forks, and so forth.
+
 ## 📝 Evaluation Requirements
 
 ### 🧑‍💻 Peer Evaluations (3/3)
