@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 08:57:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:11:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	eating(t_philo *philo)
 	{
 		// Start eating
 		pthread_mutex_lock(&philo->program->lock);
-		print_time(philo, BLUE "is eating" NC);
+		print_time_mutex(philo, "is eating");
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
 		pthread_mutex_unlock(&philo->program->lock);

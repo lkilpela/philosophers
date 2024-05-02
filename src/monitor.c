@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:47:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:12:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_if_died(t_philo *philo)
 			+ philo->program->time_to_die)
 		{
 			philo->died = 1;
-			print_time(philo, RED "died" NC);
+			print_time_mutex(philo, RED "died" NC);
 		}
 	}
 	dead = philo->died;

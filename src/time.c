@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:51:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:10:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	ft_usleep(long long time)
 
 	start_sleep = get_current_time();
 	while ((get_current_time() - start_sleep) < time)
-		usleep(50);
+		usleep(500);
 }
 
 void	print_time_mutex(t_philo *philo, char *str)
 {
-	pthread_mutex_lock(&philo->program->lock);
+	pthread_mutex_lock(&philo->program->print_lock);
 	if(!philo->died)
 		print_time(philo, str);
-	pthread_mutex_unlock(&philo->program->lock);
+	pthread_mutex_unlock(&philo->program->print_lock);
 }
 
 void	print_time(t_philo *philo, char *str)
