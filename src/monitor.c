@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:33:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:40:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	check_if_died(t_philo *philo)
 	int	dead;
 
 	pthread_mutex_lock(&philo->program->lock);
-	if (!philo->died)
+	if (!philo->died && philo->times_eaten < philo->program->num_times_to_eat)
 	{
 		if (get_current_time() >= philo->last_ate
 			+ philo->program->time_to_die)
 		{
-			print_time_mutex(philo, RED "died" NC);
+			print_time(philo, RED "died" NC);
 			philo->died = 1;
 		}
 	}
-	dead = philo->died;
+	dead = philo->died || philo->times_eaten >= philo->program->num_times_to_eat;
 	pthread_mutex_unlock(&philo->program->lock);
 	return (dead);
 }
@@ -57,11 +57,14 @@ void	dead_monitor(t_program *p)
 		if (dead(p))
 			break ;
 	}
-	pthread_mutex_lock(&p->lock);
-	while (i < p->num_of_philos)
+	if(!p->num_times_to_eat)
 	{
-		p->philos[i].died = 1;
-		i++;
+		pthread_mutex_lock(&p->lock);
+		while (i < p->num_of_philos)
+		{
+			p->philos[i].died = 1;
+			i++;
+		}
+		pthread_mutex_unlock(&p->lock);
 	}
-	pthread_mutex_unlock(&p->lock);
 }

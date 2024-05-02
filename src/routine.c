@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:11:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:59:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,18 @@ static void	eating(t_philo *philo)
 {
 	// Take forks
 	pthread_mutex_lock(philo->right_fork);
-	
 	print_time_mutex(philo, GREEN "has taken a fork" NC);
-	if (philo->program->num_of_philos == 1)
-	{
-		ft_usleep(philo->program->time_to_die);
-		pthread_mutex_unlock(philo->right_fork);
-		return ;
-	}
 	pthread_mutex_lock(philo->left_fork);
 	print_time_mutex(philo, GREEN "has taken a fork" NC);	
 	if (!check_if_died(philo))
 	{
 		// Start eating
 		pthread_mutex_lock(&philo->program->lock);
-		print_time_mutex(philo, "is eating");
+		if (!philo->died)
+			print_time(philo, "is eating");
 		philo->last_ate = get_current_time();
 		philo->times_eaten++;
+		printf("times eaten: %d \n", philo->times_eaten);
 		pthread_mutex_unlock(&philo->program->lock);
 
 		// Sleep for time_to_eat 

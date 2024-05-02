@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:50:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:10:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,25 @@ void	ft_usleep(long long time)
 		usleep(50);
 }
 
-static void	print_time(t_philo *philo, char *str)
+void	print_time(t_philo *philo, char *str)
 {
 	long long time;
 
+	pthread_mutex_lock(&philo->program->print_lock);
 	time = get_current_time() - philo->start_time;
 	printf(GREY "%lld" NC " %d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&philo->program->print_lock);
 }
 
 void	print_time_mutex(t_philo *philo, char *str)
 {
-	pthread_mutex_lock(&philo->program->print_lock);
-	if(!philo->died)
-		print_time(philo, str);
-	pthread_mutex_unlock(&philo->program->print_lock);
+	int	died;
+
+	pthread_mutex_lock(&philo->program->lock);
+	died = philo->died;
+	pthread_mutex_unlock(&philo->program->lock);
+	if(!died)
+	{
+		print_time(philo, str);	
+	}
 }

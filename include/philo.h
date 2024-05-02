@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:50:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:10:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void		dead_monitor(t_program *p);
 long long 	get_current_time(void);
 void		print_time_mutex(t_philo *philo, char *str);
 void		ft_usleep(long long time);
+void		print_time(t_philo *philo, char *str);
 
 //utils
 void		free_all(t_program *p);

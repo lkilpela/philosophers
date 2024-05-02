@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:32:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:58:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ int	main(int ac, char **av)
 		return (printf("Wrong argument count\n"), 1);
 	if (init_program(&p, ac, av) == 1)
 		return (1);
-	if (init_philos(&p) == 1)
-		return (1);
-	dead_monitor(&p);
-	wait_for_philos(&p);
+	if (p.num_of_philos == 1)
+		printf("%lld %d %s\n", p.time_to_die, 1, RED "died" NC);
+	else
+	{
+		if (init_philos(&p) == 1)
+			return (1);
+		dead_monitor(&p);
+		wait_for_philos(&p);
+	}
 	free_all(&p);
 }
