@@ -34,7 +34,11 @@ Problem:
 
 Solution:
 
-
+- Each philosopher is represented by a separate thread.
+- The forks are represented by mutexes that control access to the shared resources (the forks).
+- A philosopher picks up the fork on their right, then the fork on their left, before they start eating.
+- After eating, a philosopher puts down both forks, then starts thinking.
+- The simulation stops when a philosopher dies or when each philosopher has eaten a certain number of times.
 
 ## 🏁 Getting Started
 
