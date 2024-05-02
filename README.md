@@ -66,7 +66,7 @@ git clone https://github.com/lkilpela/philosophers.git
 - `time_to_sleep`: The time in milliseconds a philosopher spends sleeping.
 - `num_times_to_eat` (optional): The number of times each philosopher must eat before the simulation ends.
 
-Example:
+2. Example:
 
 - Do not test with more than 200 philosophers.
 - Do not test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60 ms.
