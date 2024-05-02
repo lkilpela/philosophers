@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:13:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:32:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_usleep(long long time)
 
 	start_sleep = get_current_time();
 	while ((get_current_time() - start_sleep) < time)
-		usleep(500);
+		usleep(50);
 }
 
 void	print_time_mutex(t_philo *philo, char *str)

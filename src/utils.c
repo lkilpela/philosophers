@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:52:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:38:01 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:26:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void free_all(t_program *p)
 	}
 	free(p->forks);
 	pthread_mutex_destroy(&p->lock);
+	pthread_mutex_destroy(&p->print_lock);
 	free(p->philos);
 }
 

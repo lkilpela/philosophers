@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:12:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:33:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	check_if_died(t_philo *philo)
 		if (get_current_time() >= philo->last_ate
 			+ philo->program->time_to_die)
 		{
-			philo->died = 1;
 			print_time_mutex(philo, RED "died" NC);
+			philo->died = 1;
 		}
 	}
 	dead = philo->died;
