@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:49:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:50:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int			init_philos(t_program *p);
 void 		*start_routine(void *arg);
 int			check_if_died(t_philo *philo);
 void		dead_monitor(t_program *p);
+
 // time
 long long 	get_current_time(void);
 void		print_time_mutex(t_philo *philo, char *str);
