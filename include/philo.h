@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:41:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:49:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ typedef struct	s_program
 	long long 			time_to_die;
 	long long 			time_to_eat;
 	long long 			time_to_sleep;
-	int 				num_times_to_eat;		// Number of times each philo must eat
-	pthread_mutex_t		*forks;
-	t_philo				*philos;
-	pthread_mutex_t		lock;
-	pthread_mutex_t		print_lock;	
+	int 				num_times_to_eat; // Number of times each philo must eat
+	t_philo				*philos; // An array of philosophers
+	pthread_mutex_t		*forks;// An array of mutexes representing the forks
+								//Each philo has one to left & one to right
+	pthread_mutex_t		lock; // A mutex used to sync access to shared resources
+    pthread_mutex_t		print_lock; // A mutex used to sync printing
 }				t_program;
+
 //init
 int			init_program(t_program *p, int ac, char **av);
 int			init_philos(t_program *p);
@@ -68,7 +70,7 @@ void		dead_monitor(t_program *p);
 long long 	get_current_time(void);
 void		print_time_mutex(t_philo *philo, char *str);
 void		ft_usleep(long long time);
-void		print_time(t_philo *philo, char *str);
+
 //utils
 void		free_all(t_program *p);
 int			ft_atoi(const char *str);

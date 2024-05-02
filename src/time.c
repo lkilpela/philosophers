@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:15:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:32:08 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:49:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_time_mutex(t_philo *philo, char *str)
 	pthread_mutex_unlock(&philo->program->print_lock);
 }
 
-void	print_time(t_philo *philo, char *str)
+static void	print_time(t_philo *philo, char *str)
 {
 	long long time;
 
