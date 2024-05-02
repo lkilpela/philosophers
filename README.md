@@ -21,14 +21,20 @@
 </p>
 
 ## 🍝 About The Project
+`philosophers` is a multithreaded implementation of the classic Dining Philosophers problem.
 
-This project is a multithreaded implementation of the classic Dining Philosophers problem. The Dining Philosophers problem is a classic concurrency problem dealing with synchronization. It is a great way to get hands-on experience with threads and mutexes.
+Problem:
 
-The problem consists of five philosophers sitting at a round table who do nothing but think and eat. In the center of the table is a bowl of spaghetti. A fork is placed between each pair of adjacent philosophers, and as such, each philosopher has one fork to the left and one fork to the right. As spaghetti is difficult to serve and eat with a single fork, it is assumed that a philosopher must eat with two forks. The philosopher can only use the fork on his immediate right or immediate left.
+- The Dining Philosophers problem is a classic concurrency problem dealing with synchronization.
+- It involves one or more philosophers sitting at a round table.
+- The philosophers alternatively __eat__, __think__, or __sleep__.
+- A fork is placed between each pair of adjacent philosophers. Each philosopher has one fork to the left and one fork to the right.
+- As spaghetti is difficult to serve and eat with a single fork, it is assumed that a philosopher must eat with two forks.
+- The challenge is to design a protocol that allows each philosopher to periodically stop thinking and eat without causing a deadlock.
 
-The challenge is to design a protocol that allows each philosopher to periodically stop thinking and eat without causing a deadlock. Each philosopher is a separate thread, and each pair of forks can be accessed by two threads. The philosophers' names are numbers from 0 to 4 and the forks are numbers from 0 to 4, each shared by two philosophers. The threads are created in the main function. Each philosopher thinks, then eats, then sleeps, in a loop. The simulation stops when a philosopher dies or when each philosopher has eaten a certain number of times.
+Solution:
 
-This project is a great way to learn about the challenges of concurrent programming and how to use synchronization primitives like mutexes to solve them.
+
 
 ## 🏁 Getting Started
 
