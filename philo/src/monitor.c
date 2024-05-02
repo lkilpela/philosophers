@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 15:51:34 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:01:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	dead(t_program *p)
 	return (0);
 }
 
+// checking if any philosopher has died 
+// and stopping the simulation if a philosopher has died
 void	dead_monitor(t_program *p)
 {
 	int	i;
