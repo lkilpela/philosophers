@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-	<b><i>Reproduction of a Unix pipe command (|) in C</i></b><br>
+	<b><i>A Multithreaded Solution to the Dining Philosophers Problem</i></b><br>
 </p>
 
 <p align="center">
