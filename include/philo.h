@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:55:55 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 09:10:17 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/05/02 09:41:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@
 # define GREY "\e[0;30m"
 # define RED "\e[0;31m"
 # define CYAN "\e[0;36m"
-
-/*typedef enum e_state
-{
-	THINKING,
-	HUNGRY,
-	EATING
-} 			t_state;*/
 
 typedef struct  s_philo
 {
