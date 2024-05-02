@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:48:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/29 19:34:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:48:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	eating(t_philo *philo)
 {
 	// Take forks
 	pthread_mutex_lock(philo->right_fork);
+	
 	print_time_mutex(philo, GREEN "has taken a fork" NC);
 	if (philo->program->num_of_philos == 1)
 	{
