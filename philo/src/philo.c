@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:07:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 16:09:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:08:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 {
 	t_program	p;
 
-	if (ac < 5)
+	if (ac < 5 || argc > 6)
 		return (printf("Wrong argument count\n"), 1);
 	if (init_program(&p, ac, av) == 1)
 		return (1);
