@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 22:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/05/02 16:07:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:51:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,15 @@ void	monitor_philos(t_program *p)
 	while (1)
 	{
 		if (any_philo_died(p))
-			break ;
-	}
-	if (!p->num_times_to_eat)
-	{
-		pthread_mutex_lock(&p->lock);
-		while (i < p->num_of_philos)
 		{
-			p->philos[i].died = 1;
-			i++;
+			pthread_mutex_lock(&p->lock);
+			while (i < p->num_of_philos)
+			{
+				p->philos[i].died = 1;
+				i++;
+			}
+			pthread_mutex_unlock(&p->lock);
+			return ;
 		}
-		pthread_mutex_unlock(&p->lock);
 	}
 }
