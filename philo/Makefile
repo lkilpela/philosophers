@@ -1,9 +1,14 @@
-NAME = philo
-CCFLAGS = -Wall -Wextra -Werror -g -O3 -pthread 
+NAME 		= philo
 
-HDRS = -I./include
-SRCS = src/init.c src/monitor.c src/philo.c src/routine.c src/time.c src/utils.c
-OBJS = $(SRCS:%.c=%.o)
+CC			=	cc
+M_SRC_DIR	=	.
+CCFLAGS		=	-Wall -Wextra -Werror -lpthread 
+CC_DEBUG	=	#-g #-fsanitize=leak
+HDRS		=	-I./include
+SRCS		=	src/init.c src/monitor.c src/philo.c src/routine.c src/time.c src/utils.c
+OBJS		=	$(SRCS:%.c=%.o)
+
+vpath %.c $(M_SRC_DIR)
 
 all: $(NAME)
 
@@ -14,7 +19,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "--------------------------------------------"
 	@$(CC) $(OBJS) $(HDRS) -o $(NAME)
-	@echo "[$(NAME)] $(BLUE)Built target $(NAME)$(RESET)"
+	@echo "[$(NAME)] $(BLUE)Built target $(NAME)$(RESET)"make
 	@echo "--------------------------------------------"
 
 clean:
@@ -27,6 +32,16 @@ fclean: clean
 
 re: fclean all
 	@echo "[$(NAME)] Everything rebuilt."
+
+################################################################################
+# NORM
+################################################################################
+norm:
+	norminette -R CheckForbiddenSourceHeader $(M_SRC_DIR) | grep -v "OK!" || true
+
+norm2:
+	norminette -R CheckForbiddenSourceHeader $(M_SRC_DIR)
+
 
 .PHONY: all clean fclean re
 
