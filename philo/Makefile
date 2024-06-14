@@ -2,7 +2,7 @@ NAME 		= philo
 
 CC			=	cc
 M_SRC_DIR	=	.
-CCFLAGS		=	-Wall -Wextra -Werror -lpthread 
+CCFLAGS		=	-Wall -Wextra -Werror -pthread 
 CC_DEBUG	=	#-g #-fsanitize=leak
 HDRS		=	-I./include
 SRCS		=	src/init.c src/monitor.c src/philo.c src/routine.c src/time.c src/utils.c
@@ -19,7 +19,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "--------------------------------------------"
 	@$(CC) $(OBJS) $(HDRS) -o $(NAME)
-	@echo "[$(NAME)] $(BLUE)Built target $(NAME)$(RESET)"make
+	@echo "[$(NAME)] $(BLUE)Built target $(NAME)$(RESET)"
 	@echo "--------------------------------------------"
 
 clean:
